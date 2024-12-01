@@ -69,7 +69,7 @@ const AppTopbar = forwardRef(
                   "block sm:hidden topbar-item": !isHorizontal(),
                 })}
               ></li>
-              <li className="topbar-item mr-1 font-semibold">{user.name}</li>
+              <li className="topbar-item mr-1 font-semibold">{user?.name}</li>
               <li className="topbar-item mr-3">
                 <StyleClass
                   nodeRef={imgRef}
