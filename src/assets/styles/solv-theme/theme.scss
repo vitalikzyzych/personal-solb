@@ -1,0 +1,96 @@
+// Variables required to create a custom theme
+$primaryLightColor: #acd7e9 !default;
+$primaryColor: #58aed3 !default;
+$primaryDarkColor: #3099c6 !default;
+$primaryDarkerColor: #16749d !default;
+$primaryTextColor: #ffffff !default;
+$primaryLighterColor: rgba($primaryLightColor, 0.1) !default;
+
+$highlightTextColor: $primaryColor !default;
+
+$carouselIndicatorBg: #D9D9D9 !default;
+$carouselIndicatorWidth: 0.5rem !default;
+$carouselIndicatorHeight: 0.5rem !default;
+$carouselIndicatorBorderRadius: 50% !default;
+$carouselIndicatorhighlightBg: #496D90 !default;
+
+/*
+The application's styles are governed by the following import order:
+
+  1. Theme Variables
+  2. Theme Variables - our custom overrides (if any)
+  3. Layout Variables
+  4. Layout Variables - our custom overrides (if any)
+  5. Layout Styles (class-based)
+  6. Layout Styles (class-based) - our custom overrides (if any)
+  7. Component Styles (class-based)
+  8. Component Styles (class-based) - our custom overrides (if any)
+
+The proper order of the theme's variable / styles file is the following:
+  theme variables -> layout variables -> layout styles -> component styles
+
+For every step in the above order, we inject our own custom override file
+which can optionally modify existing theme styles.
+*/
+
+// ========================================================================
+// Theme variables
+// Without this, missing variables in UI components
+// (the @import below this) -> compile error
+// ========================================================================
+// @import '../../variables/theme/_theme_dark.scss';
+// @import '../../variables/theme/_theme_dim.scss';
+@import "../variables/_variables.scss";
+
+@import "../theme-base/_components";
+@import "../extensions/extensions";
+// @import "../extensions/_fullcalendar";
+
+// ========================================================================
+// Theme variables overrides
+// This is where you can (optionally) add overrides
+// to the theme's variables
+// ========================================================================
+@import "./overrides/theme_variables.scss";
+
+// ========================================================================
+// Template's layout variables overrides
+// This is where you can (optionally) add overrides
+// to the layout's variables
+// ========================================================================
+@import "./overrides/layout_variables.scss";
+
+// ========================================================================
+// Template's Layout styles
+// Without this, none of the Layout Components have styles
+// (but the site will still work)
+// ========================================================================
+@import "../layout/layout.scss";
+
+// ========================================================================
+// Template's layout style overrides
+// This is where you can (optionally) add overrides
+// to the layout's class-based SCSS styles
+// ========================================================================
+@import "./overrides/layout.scss";
+
+// ========================================================================
+// Template's UI Component styles
+// Without this, none of the UI components have styles
+// ========================================================================
+// @import '../designer/_components.scss';
+
+// ========================================================================
+// Template's UI Component style overrides
+// This is where you can (optionally) add overrides
+// to the components' class-based SCSS styles
+// ========================================================================
+@import "./overrides/components.scss";
+
+// ========================================================================
+// Custom css classes
+// This is where you can (optionally) add your custom classes
+// ========================================================================
+@import "./overrides/custom_classes.scss";
+
+@import "./overrides/_prime_extended.scss";

@@ -1,0 +1,58 @@
+.bg-wrapper {
+  background-color: rgba(150, 150, 150, 0.1);
+}
+
+.visible-block {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+  transition-delay: 0.2s;
+}
+.invisible-block {
+  opacity: 0;
+}
+
+.max-w-40rem {
+  max-width: 40rem;
+}
+@mixin text-wrap-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+}
+
+.text-wrap-one-line {
+  @include text-wrap-lines;
+  -webkit-line-clamp: 1;
+}
+
+.text-wrap-two-lines {
+  @include text-wrap-lines;
+  -webkit-line-clamp: 2;
+}
+
+.text-wrap-three-lines {
+  @include text-wrap-lines;
+  -webkit-line-clamp: 3;
+}
+
+.text-wrap-four-lines {
+  @include text-wrap-lines;
+  -webkit-line-clamp: 4;
+}
+
+.text-wrap-five-lines {
+  @include text-wrap-lines;
+  -webkit-line-clamp: 5;
+}
+
+.text-wrap-seven-lines {
+  @include text-wrap-lines;
+  -webkit-line-clamp: 7;
+}
+
+.text-wrap-ten-lines {
+  @include text-wrap-lines;
+  -webkit-line-clamp: 10;
+}

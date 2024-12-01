@@ -1,0 +1,75 @@
+@use 'sass:math';
+
+.p-inputswitch {
+    width: $inputSwitchWidth;
+    height: $inputSwitchHeight;
+    position: relative;
+    display: inline-block;
+
+    .p-inputswitch-slider {
+        background: $inputSwitchSliderOffBg;
+        transition: $formElementTransition;
+        border-radius: $inputSwitchBorderRadius;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid transparent;
+
+        &:before {
+            background: $inputSwitchHandleOffBg;
+            width: $inputSwitchHandleWidth;
+            height: $inputSwitchHandleHeight;
+            left: $inputSwitchSliderPadding;
+            margin-top: math.div(-1 * $inputSwitchHandleHeight, 2);
+            border-radius: $inputSwitchHandleBorderRadius;
+            transition-duration: $transitionDuration;
+        }
+    }
+
+    &.p-highlight {
+        .p-inputswitch-slider:before {
+            transform: translateX($inputSwitchHandleWidth);
+            background: #ffffff;
+        }
+    }
+
+    &.p-focus {
+        .p-inputswitch-slider {
+            @include focused();
+        }
+    }
+
+    &:not(.p-disabled):hover {
+        .p-inputswitch-slider {
+            background: 'red';
+        }
+    }
+    &:not(.p-disabled):has(.p-inputswitch-input:hover).p-highlight .p-inputswitch-slider {
+        background: $inputSwitchSliderOnBg
+      }
+
+    &.p-highlight {
+        .p-inputswitch-slider {
+            background: $inputSwitchSliderOnBg;
+
+            &:before {
+                background: $inputSwitchHandleOnBg;
+             }
+        }
+
+        &:not(.p-disabled):hover {
+            .p-inputswitch-slider {
+                background: $inputSwitchSliderOnHoverBg;
+            }
+        }
+    }
+
+    &.p-invalid {
+        .p-inputswitch-slider {
+            @include invalid-input();
+        }
+    }
+}
