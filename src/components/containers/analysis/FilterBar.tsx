@@ -66,14 +66,12 @@ const FilterBar: FC<IFilterBar> = ({ onVisibleChange, visible }) => {
       );
       return updatedCheckboxValues; // Return a new state object
     });
-
   };
 
   const derivedChips = React.useMemo(
     () => Object.values(checkboxValues).flat(),
     [checkboxValues]
   );
-
 
   const header = (
     <div className="flex align-items-center">

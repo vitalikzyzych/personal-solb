@@ -102,7 +102,12 @@ const StakeHolderHorizontalChart: FC = () => {
             classNameTitle="text-lg font-medium solv-black"
             className="flex align-items-center gap-3"
           />
-          <Button icon="pi pi-download" outlined className="solv-black" onClick={downloadChart} />
+          <Button
+            icon="pi pi-download"
+            outlined
+            className="solv-black"
+            onClick={downloadChart}
+          />
         </div>
       }
       subTitle={subTitle}
