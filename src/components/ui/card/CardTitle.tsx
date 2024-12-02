@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { type FC } from "react";
 
 interface CardTitleWithIconProps {
   icon?: React.ReactNode;
@@ -9,7 +9,7 @@ interface CardTitleWithIconProps {
   classNameIcon?: string;
 }
 
-const CardTitle: React.FC<CardTitleWithIconProps> = ({
+export const CardTitle: FC<CardTitleWithIconProps> = ({
   icon,
   text,
   className = "",
@@ -23,5 +23,3 @@ const CardTitle: React.FC<CardTitleWithIconProps> = ({
     </div>
   );
 };
-
-export default CardTitle;

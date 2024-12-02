@@ -11,6 +11,21 @@ const AppMenu = () => {
           to: "/",
         },
         {
+          label: "Analysis",
+          icon: "pi pi-fw pi-comment",
+          items: [
+            {
+              label: "Stakeholder field",
+              to: "/analysis/stakeholder-field",
+            },
+            {
+              label: "Project",
+              to: "/analysis/project",
+              disabled: true,
+            },
+          ],
+        },
+        {
           label: "Data review",
           icon: "pi pi-fw pi-comment",
           items: [

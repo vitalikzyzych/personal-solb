@@ -1,8 +1,7 @@
 import { FC } from "react";
 
 import { Timeline } from "primereact/timeline";
-import CardComponent from "./components/CardComponent";
-import CardTitle from "./components/CardTitle";
+import { CardComponent, CardTitle } from "@/components";
 import { Accordion, AccordionTab } from "primereact/accordion";
 
 interface IEventsData {

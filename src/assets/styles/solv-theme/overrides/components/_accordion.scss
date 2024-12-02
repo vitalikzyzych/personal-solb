@@ -10,8 +10,6 @@
       transition: $listItemTransition;
       flex-direction: row-reverse;
       justify-content: space-between;
-
-      
       border-bottom: 1px solid #d4d6d9;
 
       .p-accordion-toggle-icon {
@@ -76,6 +74,49 @@
       padding: 0;
       border-bottom: none;
       color: #000
+    }
+  }
+
+  .accordion-header-filter {
+    .p-accordion-header-link {
+      padding: 1.25rem 0;
+      color: #000;
+      font-weight: 500;
+
+    }
+    &:not(.p-highlight):not(.p-disabled):hover {
+      .p-accordion-header-link {
+        background: transparent;
+        border-color: #C7C7C7;
+        color: #000;
+      }
+    }
+
+    &:not(.p-disabled).p-highlight {
+      .p-accordion-header-link {
+        background: #fff;
+        border-color: #C7C7C7;
+        color: #000;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom: none;
+      }
+
+      &:hover {
+        .p-accordion-header-link {
+          border-color: #C7C7C7;
+          background: transparent;
+          color: #000;
+        }
+      }
+    }
+  }
+  .accordion-content-filter {
+    .p-accordion-content {
+      padding: 0;
+      padding-bottom: 1.25rem;
+      border-left: 0;
+        border-right: 0;
     }
   }
 }

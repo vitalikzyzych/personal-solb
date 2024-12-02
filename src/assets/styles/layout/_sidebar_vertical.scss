@@ -40,6 +40,13 @@
         padding: 0;
         list-style-type: none;
 
+        .disabled {
+            background: none;
+            cursor: default;
+            color: #868686;
+            pointer-events: none;
+        }
+
         .layout-root-menuitem {
             > .layout-menuitem-root-text {
                 font-size: 0.857rem;

@@ -1,8 +1,7 @@
 "use client";
 import { type FC, useEffect, useState } from "react";
 import Image from "next/image";
-import CardComponent from "./components/CardComponent";
-import CardTitle from "./components/CardTitle";
+import { CardComponent, CardTitle } from "@/components";
 import { Divider } from "primereact/divider";
 
 const Analysis: FC = () => {

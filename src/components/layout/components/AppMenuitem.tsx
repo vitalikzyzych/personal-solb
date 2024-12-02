@@ -183,7 +183,9 @@ const AppMenuitem = (props: AppMenuItemProps) => {
           <a
             href={item?.url}
             onClick={(e) => itemClick(e)}
-            className={classNames(item?.class, "p-ripple tooltip-target")}
+            className={classNames(item?.class, "p-ripple tooltip-target", {
+              disabled: item?.disabled,
+            })}
             target={item?.target}
             data-pr-tooltip={item?.label}
             data-pr-disabled={
@@ -210,6 +212,7 @@ const AppMenuitem = (props: AppMenuItemProps) => {
             onClick={(e) => itemClick(e)}
             className={classNames(item?.class, "p-ripple ", {
               "active-route": isActiveRoute,
+              disabled: item?.disabled,
             })}
             tabIndex={0}
             onMouseEnter={onMouseEnter}

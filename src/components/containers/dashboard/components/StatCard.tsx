@@ -29,7 +29,7 @@ export const StatCard: FC<IStatCard> = ({
     <Card className="w-full min-w-20rem h-full">
       <div className="flex justify-content-between align-items-center">
         <div className="flex gap-1">
-          <span className="text-6xl solv-blue-400  font-medium ">{metric}</span>
+          <span className="text-6xl solv-dark-green-400 font-medium ">{metric}</span>
           {metricChange && (
             <span className="align-self-end solv-green-600 font-medium">
               {" "}
@@ -38,7 +38,7 @@ export const StatCard: FC<IStatCard> = ({
           )}
         </div>
         {icon && (
-          <div className="flex justify-content-center align-items-center solv-bg-blue-200 p-2 border-circle">
+          <div className="flex justify-content-center align-items-center solv-bg-blue-300 p-2 border-circle">
             <Image src={icon} alt="icon" width={28} height={28} />
           </div>
         )}

@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Accordion, AccordionTab } from "primereact/accordion";
-import CardComponent from "./components/CardComponent";
-import CardTitle from "./components/CardTitle";
+import { CardComponent, CardTitle } from "@/components";
 import { type FC } from "react";
 
 const actionsData = [

@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
-import CardComponent from "./components/CardComponent";
-import CardTitle from "./components/CardTitle";
-import { type FC } from "react";
+import { CardComponent, CardTitle } from "@/components";
+import { type FC, Fragment } from "react";
 import { Button } from "primereact/button";
 import { Divider } from "primereact/divider";
 
@@ -47,11 +46,8 @@ const Actions: FC = () => {
       content={
         <div className="flex flex-column gap-1">
           {actionsData.map((action, index) => (
-            <>
-              <div
-                key={action.id}
-                className="flex justify-content-between items-center border-b gap-3"
-              >
+            <Fragment key={action.id}>
+              <div className="flex justify-content-between items-center border-b gap-3">
                 <div className="flex gap-3 align-items-center">
                   <Image src={action.icon} alt="icon" width={20} height={20} />
                   <span className="solv-black">
@@ -73,7 +69,7 @@ const Actions: FC = () => {
                 </div>
               </div>
               {index < actionsData.length - 1 && <Divider />}
-            </>
+            </Fragment>
           ))}
         </div>
       }

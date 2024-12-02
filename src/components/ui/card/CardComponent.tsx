@@ -5,7 +5,7 @@ import { type FC } from "react";
 
 interface CardComponentProps {
   title: React.ReactNode;
-  subTitle?: string;
+  subTitle?: React.ReactNode;
   content: React.ReactNode;
   footer?: React.ReactNode;
   onButtonClick?: () => void;
@@ -14,7 +14,7 @@ interface CardComponentProps {
   className?: string; // Add className prop
 }
 
-const CardComponent: FC<CardComponentProps> = ({
+export const CardComponent: FC<CardComponentProps> = ({
   title,
   subTitle,
   content,
@@ -39,5 +39,3 @@ const CardComponent: FC<CardComponentProps> = ({
     </Card>
   );
 };
-
-export default CardComponent;

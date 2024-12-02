@@ -39,6 +39,7 @@ const progressCardsData = [
     metric: 2932,
     captured: 31,
     predicted: 69,
+    icon: "/layout/images/stars.svg",
   },
 ];
 

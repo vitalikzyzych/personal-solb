@@ -182,6 +182,8 @@ export interface MenuModel {
   badgeClassName?: string;
   badgeStyle?: CSSProperties;
   className?: string;
+  visible?: boolean;
+  disabled?: boolean;
 }
 
 export interface UseSubmenuOverlayPositionProps {

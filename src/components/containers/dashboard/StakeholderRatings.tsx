@@ -4,8 +4,7 @@ import Image from "next/image";
 import { Carousel } from "primereact/carousel";
 import { Dropdown } from "primereact/dropdown";
 import { Chart } from "primereact/chart";
-import CardComponent from "./components/CardComponent";
-import CardTitle from "./components/CardTitle";
+import { CardComponent, CardTitle } from "@/components";
 
 interface StakeholderData {
   name: string;
@@ -32,7 +31,17 @@ const generateData = (count: number): StakeholderData[] => {
   }));
 };
 
-const StakeholderRatings: FC = () => {
+interface IStakeholderRatings {
+  title: string;
+  subTitle: string;
+  isIcon?: boolean;
+}
+
+const StakeholderRatings: FC<IStakeholderRatings> = ({
+  title,
+  subTitle,
+  isIcon = true,
+}) => {
   const [dataCount, setDataCount] = useState(10);
   const [activePage, setActivePage] = useState(0);
   const [sortBy, setSortBy] = useState<"Name" | "Value">("Name");
@@ -124,16 +133,16 @@ const StakeholderRatings: FC = () => {
 
   const carouselPages = useMemo(() => {
     const barColors = [
-      "#569741", // Example colors
-      "#83AF46",
-      "#B8CD4C",
-      "#E2E451",
-      "#E2E451",
-      "#FCE651",
-      "#FCE651",
-      "#F4BF48",
-      "#EC9A40",
-      "#E57938",
+      "#1BDF93", // Example colors
+      "#1FD58F",
+      "#25C587",
+      "#31A97A",
+      "#33A478",
+      "#3E8A6C",
+      "#3F886B",
+      "#496F60",
+      "#496F60",
+      "#496F60",
     ];
 
     return Array.from({ length: totalPages }, (_, pageIndex) => {
@@ -158,7 +167,6 @@ const StakeholderRatings: FC = () => {
               valueToColorMap.get(item.value)
             ),
             borderRadius: 4,
-            // hoverBackgroundColor: "#2C5174",
             maxBarThickness: 45,
             minBarLength: 2,
             data: pageData.map((item) => item.value),
@@ -171,7 +179,7 @@ const StakeholderRatings: FC = () => {
         chartData: pageChartData,
       };
     });
-  }, [data, valueType, totalPages, itemsPerPage]);
+  }, [data, totalPages, itemsPerPage]);
 
   const barOptions = [
     { label: "5", value: 5 },
@@ -190,7 +198,7 @@ const StakeholderRatings: FC = () => {
 
   const handleDataCountChange = (value: number) => {
     setDataCount(value);
-    setActivePage(0); // Перехід на перший слайд
+    setActivePage(0);
   };
 
   return (
@@ -198,14 +206,16 @@ const StakeholderRatings: FC = () => {
       title={
         <div className="flex justify-content-between">
           <CardTitle
-            text="Unique value ratings per stakeholder"
+            text={title}
             icon={
-              <Image
-                src="/layout/images/people.svg"
-                alt="icon"
-                width={24}
-                height={24}
-              />
+              isIcon ? (
+                <Image
+                  src="/layout/images/people.svg"
+                  alt="icon"
+                  width={24}
+                  height={24}
+                />
+              ) : null
             }
             classNameTitle="text-lg font-medium solv-grey-900"
             className="flex align-items-center gap-3"
@@ -256,9 +266,7 @@ const StakeholderRatings: FC = () => {
       }
       content={
         <div className="flex flex-column gap-6">
-          <p className="solv-grey-800">
-            Overview of how stakeholders rate project specific values
-          </p>
+          <p className="solv-grey-800">{subTitle}</p>
           <Carousel
             value={carouselPages}
             className="h-full"
