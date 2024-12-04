@@ -1,3 +1,5 @@
+import { getCurrentTheme } from "@/constants/theme";
+
 type Point = {
   title: string;
   distance: number;
@@ -57,10 +59,11 @@ export const generateInputData = (
   return inputData;
 };
 
-export const generateClusterData = (data: PreCluster[]) => {
+export const generateClusterData = (data: PreCluster[], theme: string) => {
   const clusters: Cluster[] = [];
   // Pre-generate colors based on the number of clusters
-  const colors = generateDistinctColors(data.length);
+  const colors = getCurrentTheme(theme).values;
+  // const colors = generateDistinctColors(data.length);
   data.forEach((cluster, index) => {
     // Randomly place cluster centers
     const center = [
@@ -89,13 +92,25 @@ export const generateClusterData = (data: PreCluster[]) => {
   return clusters;
 };
 
-// Generate dynamic inputData and clusterData with distance limits
-const inputData = generateInputData(
-  7, // Number of clusters
-  25, // Minimum number of points per cluster
-  40, // Maximum number of points per cluster
-  1, // Minimum distance from center
-  50 // Maximum distance from center
-);
+export function generateClusterDataForRadialChart(numArrays: number) {
+  const clusterNames = [
+    "Nature",
+    "Community",
+    "Vermindering van geluidhinder",
+    "Optimalisatie van het busverkeer",
+    "Progress",
+  ];
 
-export const clusterData = generateClusterData(inputData);
+  // Function to generate a random array of { name, value } objects
+  const generateCluster = () => {
+    return clusterNames.map((name) => ({
+      name: name,
+      value: Math.floor(Math.random() * 101), // Random value between 0 and 100
+    }));
+  };
+
+  // Create an array of arrays
+  const data = Array.from({ length: numArrays }, () => generateCluster());
+
+  return data;
+}

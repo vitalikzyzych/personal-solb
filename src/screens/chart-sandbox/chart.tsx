@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import { FloatLabel } from "primereact/floatlabel";
 import { InputSwitch } from "primereact/inputswitch"; // PrimeReact InputSwitch for toggling labels
@@ -7,7 +7,7 @@ import { generateClusterData, generateInputData } from "utils/fakeData"; // Impo
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 
-const MultiCenterChart = () => {
+const MultiCenterChart: FC<{ theme: string }> = ({ theme }) => {
   // Default parameters for generateInputData
   const [numClusters, setNumClusters] = useState(7);
   const [minPoints, setMinPoints] = useState(25);
@@ -27,7 +27,7 @@ const MultiCenterChart = () => {
     )
   );
   const [clusterData, setClusterData] = useState(() =>
-    generateClusterData(inputData)
+    generateClusterData(inputData, theme)
   );
 
   // Function to update chart data based on form inputs
@@ -40,11 +40,13 @@ const MultiCenterChart = () => {
       maxDistance
     );
     setInputData(newInputData);
-    setClusterData(generateClusterData(newInputData));
+    setClusterData(generateClusterData(newInputData, theme));
     setClustersToShow(numClusters); // Reset to show all clusters
     setSelectedCluster(null); // Reset any selected cluster
     setTopPoints(null); // Reset top points filter
   };
+
+  console.log(clusterData);
   const chartRef = useRef(null);
   const [selectedCluster, setSelectedCluster] = useState(null); // Track selected cluster
   const [showLabels, setShowLabels] = useState(true); // Toggle labels visibility

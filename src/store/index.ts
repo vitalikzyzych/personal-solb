@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "core/rootStore";
 import auth from "./auth";
+import settings from "./settings";
 
 export const appSelector = createSelector(
   (state: RootState) => state,
@@ -8,5 +9,6 @@ export const appSelector = createSelector(
 );
 
 export default {
-  auth: auth,
+  auth,
+  settings,
 };
