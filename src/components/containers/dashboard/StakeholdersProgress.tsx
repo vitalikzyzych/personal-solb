@@ -17,7 +17,7 @@ const StakeholdersProgress: FC = () => {
               height={24}
             />
           }
-          classNameTitle="text-lg font-medium solv-grey-900"
+          classNameTitle="text-lg font-medium text-gray-800"
           className="flex align-items-center gap-3"
           classNameIcon="flex align-items-center justify-content-center w-1-5-rem h-1-5-rem"
         />

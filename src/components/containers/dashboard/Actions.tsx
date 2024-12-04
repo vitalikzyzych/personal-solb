@@ -39,7 +39,7 @@ const Actions: FC = () => {
       title={
         <CardTitle
           text="Recommended Actions"
-          classNameTitle="text-2xl font-medium solv-black"
+          classNameTitle="text-2xl font-medium text-gray-900"
           className="flex align-items-center gap-3 mb-3"
         />
       }
@@ -50,7 +50,7 @@ const Actions: FC = () => {
               <div className="flex justify-content-between items-center border-b gap-3">
                 <div className="flex gap-3 align-items-center">
                   <Image src={action.icon} alt="icon" width={20} height={20} />
-                  <span className="solv-black">
+                  <span className="text-gray-900">
                     {action.type} with{" "}
                     <span className="underline">
                       {action.participants.join(", ")}

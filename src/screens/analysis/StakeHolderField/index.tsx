@@ -2,6 +2,7 @@
 import { useState } from "react";
 import {
   FilterBar,
+  ScatterPlot,
   StakeHolderHorizontalChart,
   StakeholderRatings,
 } from "@/components";
@@ -22,7 +23,7 @@ const StakeHolderFieldPage: Page = () => {
               width={32}
               height={32}
             />
-            <div className="text-4xl font-medium solv-black">
+            <div className="text-4xl font-medium text-gray-900">
               Stakeholder Field
             </div>
           </div>
@@ -30,8 +31,8 @@ const StakeHolderFieldPage: Page = () => {
             label="Filter"
             icon="pi pi-sliders-h"
             badge="2"
-            className="flex-shrink-0 p-3 solv-bg-light-green-100 solv-black border-none"
-            badgeClassName="solv-black"
+            className="flex-shrink-0 p-3 bg-green-50 text-gray-900 border-none"
+            badgeClassName="text-gray-900"
             onClick={() => setVisible(true)}
           />
         </div>
@@ -45,6 +46,9 @@ const StakeHolderFieldPage: Page = () => {
           subTitle="Overview of how stakeholders rate project specific values"
           isIcon={false}
         />
+      </div>
+      <div className="col-12">
+        <ScatterPlot />
       </div>
       <FilterBar visible={visible} onVisibleChange={setVisible} />
     </div>

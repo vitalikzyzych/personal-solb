@@ -7,6 +7,7 @@ import Analysis from "./Analysis";
 import DataAccuracy from "./DataAccuracy";
 import MetricsComponent from "./MetricsComponent";
 import Notifications from "./Notifications";
+import StakeholderDistribution from "./StakeholderDistribution";
 
 export {
   Actions,
@@ -16,6 +17,7 @@ export {
   DataVault,
   MetricsComponent,
   Notifications,
+  StakeholderDistribution,
   StakeholderRatings,
   StakeholdersProgress,
 };

@@ -15,24 +15,24 @@ const Notifications: FC = () => {
     {
       text: "12 values and 5 stakeholders approved  ",
       date: "01/10/24",
-      color: "#496D90",
+      color: "#0AFFA5",
     },
     {
       text: "User has merged 15 values",
       date: "01/10/24",
-      color: "#496D90",
+      color: "#0AFFA5",
     },
     {
       text: "analysed 10 documents",
       date: "01/10/24",
-      color: "#496D90",
+      color: "#0AFFA5",
     },
     { text: "analysed 10 documents", date: "01/10/24", color: "#496D90B" },
   ];
 
   const customizedMarker = () => {
     return (
-      <span className="w-0-5-rem h-0-5-rem solv-bg-blue-400 border-round"></span>
+      <span className="w-0-5-rem h-0-5-rem bg-green-50 border-round"></span>
     );
   };
 
@@ -55,7 +55,7 @@ const Notifications: FC = () => {
       title={
         <CardTitle
           text="Notifications"
-          classNameTitle="text-lg font-medium solv-black"
+          classNameTitle="text-lg font-medium text-gray-900"
           className="flex align-items-center gap-3 mb-4"
         />
       }

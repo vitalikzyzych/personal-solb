@@ -75,7 +75,7 @@ const FilterBar: FC<IFilterBar> = ({ onVisibleChange, visible }) => {
 
   const header = (
     <div className="flex align-items-center">
-      <h2 className="text-lg solv-black font-medium m-0">Filter by</h2>
+      <h2 className="text-lg font-medium m-0">Filter by</h2>
     </div>
   );
 
@@ -93,16 +93,16 @@ const FilterBar: FC<IFilterBar> = ({ onVisibleChange, visible }) => {
       >
         <div style={{ padding: "0 1.25rem" }}>
           <div
-            className="flex flex-column gap-3 border-y-1 solv-br-grey-500"
+            className="flex flex-column gap-3 border-y-1 border-gray-500"
             style={{ padding: "1.25rem 0" }}
           >
             <div className="flex align-items-center justify-content-between">
-              <h4 className="m-0 text-base font-medium solv-black">Selected</h4>
+              <h4 className="m-0 text-base font-medium">Selected</h4>
               <Button
                 label="Clear all"
                 link
                 onClick={clearAllFilters}
-                className="text-sm solv-black opacity-60 font-normal"
+                className="text-sm text-gray-900 opacity-60 font-normal"
                 style={{ boxShadow: "none" }}
               />
             </div>
@@ -116,12 +116,12 @@ const FilterBar: FC<IFilterBar> = ({ onVisibleChange, visible }) => {
                       label={filter}
                       removable
                       onRemove={(e) => removeFilter(e)}
-                      className="border-round-lg solv-black"
+                      className="border-round-lg text-gray-900"
                     />
                   );
                 })
               ) : (
-                <span className="solv-grey-400">No filters selected</span>
+                <span className="text-gray-400">No filters selected</span>
               )}
             </div>
           </div>
@@ -255,7 +255,7 @@ const FilterBar: FC<IFilterBar> = ({ onVisibleChange, visible }) => {
         </div>
 
         {/* Footer */}
-        <div className="solv-bg-blue-100 mt-5" style={{ padding: "1.25rem" }}>
+        <div className="bg-blue-100 mt-5" style={{ padding: "1.25rem" }}>
           <div className="flex justify-content-between align-items-center gap-3">
             <div className="flex flex-column">
               <p className="m-0 font-semibold">Current selection</p>
@@ -265,7 +265,7 @@ const FilterBar: FC<IFilterBar> = ({ onVisibleChange, visible }) => {
             </div>
             <Button
               label="Save"
-              className="flex-shrink-0 solv-bg-blue-400"
+              className="flex-shrink-0 bg-blue-400"
               onClick={saveFilters}
             />
           </div>

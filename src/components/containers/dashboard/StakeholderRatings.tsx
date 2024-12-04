@@ -217,13 +217,13 @@ const StakeholderRatings: FC<IStakeholderRatings> = ({
                 />
               ) : null
             }
-            classNameTitle="text-lg font-medium solv-grey-900"
+            classNameTitle="text-lg font-medium text-gray-800"
             className="flex align-items-center gap-3"
             classNameIcon="flex align-items-center justify-content-center w-1-5-rem h-1-5-rem"
           />
           <div className="flex gap-4 align-items-center">
             <div className="flex align-items-center gap-2">
-              <label htmlFor="bars" className="solv-black text-base">
+              <label htmlFor="bars" className="text-gray-900 text-base">
                 bars
               </label>
               <Dropdown
@@ -236,7 +236,7 @@ const StakeholderRatings: FC<IStakeholderRatings> = ({
               />
             </div>
             <div className="flex align-items-center gap-2">
-              <label htmlFor="value" className="solv-black text-base">
+              <label htmlFor="value" className="text-gray-900 text-base">
                 value
               </label>
               <Dropdown
@@ -249,7 +249,7 @@ const StakeholderRatings: FC<IStakeholderRatings> = ({
               />
             </div>
             <div className="flex align-items-center gap-2">
-              <label htmlFor="sort" className="solv-black text-base">
+              <label htmlFor="sort" className="text-gray-900 text-base">
                 sort by
               </label>
               <Dropdown
@@ -266,7 +266,7 @@ const StakeholderRatings: FC<IStakeholderRatings> = ({
       }
       content={
         <div className="flex flex-column gap-6">
-          <p className="solv-grey-800">{subTitle}</p>
+          <p className="text-gray-200">{subTitle}</p>
           <Carousel
             value={carouselPages}
             className="h-full"

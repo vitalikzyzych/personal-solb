@@ -87,7 +87,7 @@ const StakeHolderHorizontalChart: FC = () => {
   };
 
   const subTitle = (
-    <p className="solv-grey-800">
+    <p className="text-gray-200">
       What project specific values have the greatest priority according to all
       stakeholders.
     </p>
@@ -99,13 +99,13 @@ const StakeHolderHorizontalChart: FC = () => {
         <div className="flex justify-content-between align-items-center">
           <CardTitle
             text="Dominant values"
-            classNameTitle="text-lg font-medium solv-black"
+            classNameTitle="text-lg font-medium text-gray-900"
             className="flex align-items-center gap-3"
           />
           <Button
             icon="pi pi-download"
             outlined
-            className="solv-black"
+            className="text-gray-900"
             onClick={downloadChart}
           />
         </div>

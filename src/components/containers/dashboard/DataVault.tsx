@@ -31,7 +31,7 @@ const DataVault: FC = () => {
               height={24}
             />
           }
-          classNameTitle="text-lg font-medium solv-black"
+          classNameTitle="text-lg font-medium text-gray-900"
           className="flex align-items-center gap-3 mb-3"
           classNameIcon="flex align-items-center justify-content-center w-1-5-rem h-1-5-rem"
         />
@@ -44,11 +44,13 @@ const DataVault: FC = () => {
               className="flex flex-column md:flex-row text-start relative"
             >
               <div className="flex flex-column">
-                <p className="text-sm solv-grey-600 font-medium">
+                <p className="text-sm text-gray-600 font-medium">
                   {item.label}
                 </p>
-                <p className="text-2xl font-medium solv-black ">{item.value}</p>
-                <p className="text-sm solv-green-500">
+                <p className="text-2xl font-medium text-gray-900">
+                  {item.value}
+                </p>
+                <p className="text-sm text-green-200">
                   {item.change} since last week
                 </p>
               </div>

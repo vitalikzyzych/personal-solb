@@ -28,26 +28,26 @@ export const ProgressCard: FC<IProgressCard> = ({
   <Card className="w-full min-w-20rem h-full">
     <div className="flex justify-content-between align-items-center">
       <div className="flex gap-1">
-        <span className="text-6xl solv-dark-green-400  font-medium ">
+        <span className="text-6xl text-green-900 font-medium ">
           {percentage ? `${percentage}%` : metric}
         </span>
       </div>
       {icon && (
-        <div className="flex justify-content-center align-items-center solv-bg-blue-300 p-2 border-circle">
+        <div className="flex justify-content-center align-items-center bg-blue-200 p-2 border-circle">
           <Image src={icon} alt="icon" width={28} height={28} />
         </div>
       )}
     </div>
-    <p className="text-lg solv-grey-300">{title}</p>
+    <p className="text-lg text-gray-300">{title}</p>
     <div className="flex justify-content-center">
       <div className="grid">
         <div className="col-6">
           <div className="flex">
             <div className="flex flex-column gap-2 align-items-center">
-              <span className="text-xl solv-black font-medium">
+              <span className="text-xl text-gray-900 font-medium">
                 {uploaded ? uploaded : `${captured}%`}
               </span>
-              <span className="solv-grey-700">
+              <span className="text-gray-700">
                 {uploaded ? "uploaded" : "captured"}
               </span>
             </div>
@@ -57,10 +57,10 @@ export const ProgressCard: FC<IProgressCard> = ({
         <div className="col-6">
           <div className="flex justify-content-between">
             <div className="flex flex-column gap-2 align-items-center">
-              <span className="text-xl solv-black font-medium">
+              <span className="text-xl  font-medium">
                 {analyzed ? analyzed : predicted}
               </span>
-              <span className="solv-grey-700">
+              <span className="text-gray-700">
                 {analyzed ? "analyzed" : "predicted"}
               </span>
             </div>
