@@ -8,12 +8,13 @@ import { rootStore } from "core/rootStore";
 import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
 import "primereact/resources/primereact.css";
-import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/themes/lara-light-green/theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import "assets/styles/main.scss";
 import { LayoutProvider } from "@/components/layout/context/layoutcontext";
-import Head from "next/head";
-// import '../styles/demo/demo.scss';
+import { setupFontAwesomeIcons } from "@/core/font-awesome";
+
+setupFontAwesomeIcons();
 
 export default function RootLayout({
   children,

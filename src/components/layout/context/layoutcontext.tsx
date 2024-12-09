@@ -17,7 +17,7 @@ export const LayoutProvider = (props: ChildContainerProps) => {
   const [layoutConfig, setLayoutConfig] = useState<LayoutConfig>({
     ripple: true,
     inputStyle: "outlined",
-    menuMode: "static",
+    menuMode: "drawer",
     colorScheme: "light",
     theme: "teal",
     scale: 16,

@@ -31,22 +31,22 @@ const AppMenu = () => {
           items: [
             {
               label: "Stakeholders",
-              icon: "pi pi-fw pi-image",
+              // icon: "pi pi-fw pi-image",
               to: "/data-review/stakeholders",
             },
             {
               label: "Values",
-              icon: "pi pi-fw pi-list",
+              // icon: "pi pi-fw pi-list",
               to: "/data-review/values",
             },
             {
               label: "Gap analysis",
-              icon: "pi pi-fw pi-pencil",
+              // icon: "pi pi-fw pi-pencil",
               to: "/data-review/gap-analytics",
             },
             {
               label: "Chart sandbox",
-              icon: "pi pi-fw pi-chart-bar",
+              // icon: "pi pi-fw pi-chart-bar",
               to: "/data-review/chart-sandbox",
             },
           ],

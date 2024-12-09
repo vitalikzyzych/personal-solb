@@ -53,19 +53,16 @@ const AppSidebar = (props: { sidebarRef: React.RefObject<HTMLDivElement> }) => {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div className="sidebar-header flex justify-content-center">
+        <div className="sidebar-header flex justify-content-center relative">
           <a onClick={navigateToDashboard} className="app-logo cursor-pointer">
-            <img
-              className=""
-              src="/layout/images/menu_logo.png"
-              alt="Profile"
-            />
+            <img className="w-3rem h-3rem" src="/solv-logo.png" alt="Profile" />
           </a>
-          {/* <button
-            className="layout-sidebar-anchor p-link"
+
+          <button
+            className="layout-sidebar-anchor p-link absolute right-0 mr-4"
             type="button"
             onClick={anchor}
-          ></button> */}
+          ></button>
         </div>
 
         <div className="layout-menu-container">

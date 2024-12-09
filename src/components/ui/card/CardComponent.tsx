@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import { type FC } from "react";
 
 interface CardComponentProps {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   subTitle?: React.ReactNode;
   content: React.ReactNode;
   footer?: React.ReactNode;
@@ -26,7 +26,7 @@ export const CardComponent: FC<CardComponentProps> = ({
 }) => {
   return (
     <Card
-      title={title}
+      title={title || null}
       subTitle={subTitle}
       footer={footer}
       className={`h-full ${className}`}

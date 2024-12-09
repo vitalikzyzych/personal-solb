@@ -21,6 +21,7 @@
     .p-dropdown-label {
         background: transparent;
         border: 0 none;
+        color: #000;
 
         &.p-placeholder {
             color: $inputPlaceholderTextColor;
@@ -49,7 +50,6 @@
         @include invalid-input();
     }
 }
-
 .p-dropdown-panel {
     background: $inputOverlayBg;
     color: $inputListTextColor;
@@ -87,6 +87,7 @@
             }
         }
     }
+    
 
     .p-dropdown-items {
         padding: $inputListPadding;
@@ -103,6 +104,9 @@
             &.p-highlight {
                 color: $highlightTextColor;
                 background: $highlightBg;
+                &.p-focus {
+                    background: $highlightBg;
+                }
             }
 
             &:not(.p-highlight):not(.p-disabled):hover {

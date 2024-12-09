@@ -1,0 +1,170 @@
+.p-tabview {
+  .p-tabview-nav {
+    border: none;
+    background: transparent;
+    li {
+      margin-right: $tabviewHeaderSpacing;
+
+      .p-tabview-nav-link {
+          border: $tabviewHeaderBorder;
+          border-width: $tabviewHeaderBorderWidth;
+          border-color: $tabviewHeaderBorderColor;
+          background: transparent;
+          color: #000;
+          opacity: .7;
+          padding: 1rem;
+          font-weight: 400;
+          font-size: 1.125rem;
+          border-top-right-radius: 0;
+          border-top-left-radius: 0;
+          transition: $listItemTransition;
+          margin: $tabviewHeaderMargin;
+
+          &:not(.p-disabled):focus-visible {
+              @include focused-inset();
+          }
+      }
+
+      &:not(.p-highlight):not(.p-disabled):hover {
+          .p-tabview-nav-link {
+              background: transparent;
+              border-color: $tabviewHeaderHoverBorderColor;
+              color: #000;
+              opacity: 1;
+          }
+      }
+
+      &.p-highlight {
+          .p-tabview-nav-link {
+              background: #0AFFA5;
+              border: none;
+              color: #000;
+              border-radius: 10px;
+              opacity: 1;
+          }
+      }
+    }
+
+    
+  }
+  .p-tabview-close {
+    margin-left: $inlineSpacing;
+  }
+  
+  .p-tabview-nav-btn.p-link {
+    background: $tabviewHeaderActiveBg;
+    color: $tabviewHeaderTextActiveColor;
+    width: $buttonIconOnlyWidth;
+    box-shadow: $raisedButtonShadow;
+    border-radius: 0;
+
+    &:focus-visible {
+        @include focused-inset();
+    }
+  }
+
+  .p-tabview-panels {
+    background: transparent;
+    padding: 0;
+    border: $tabviewContentBorder;
+    color: $tabviewContentTextColor;
+    border-bottom-right-radius: $borderRadius;
+    border-bottom-left-radius: $borderRadius;
+  }
+}
+
+.with-border.p-tabview {
+  .p-tabview-nav {
+      background: transparent;
+      border: none;
+      border-width: $tabviewNavBorderWidth;
+
+      li {
+          margin-right: $tabviewHeaderSpacing;
+
+          .p-tabview-nav-link {
+              // border: none;
+              border-bottom:  0 none;
+              border-width: $tabviewHeaderBorderWidth;
+              border-color: $tabviewHeaderBorderColor;
+              background: transparent;
+              color: #272727;
+              padding: $tabviewHeaderPadding;
+              font-weight: 500;
+              font-size: 1rem;
+              border-top-right-radius: $borderRadius;
+              border-top-left-radius: $borderRadius;
+              transition: $listItemTransition;
+              margin: $tabviewHeaderMargin;
+
+              &:not(.p-disabled):focus-visible {
+                  @include focused-inset();
+              }
+          }
+
+          &:not(.p-highlight):not(.p-disabled):hover {
+              .p-tabview-nav-link {
+                  background: transparent;
+                  border-color: $tabviewHeaderHoverBorderColor;
+                  color: $tabviewHeaderTextHoverColor;
+                  border-bottom: 0 none;
+              }
+          }
+
+          &.p-highlight {
+              .p-tabview-nav-link {
+                  background: transparent;
+                  color: #000;
+                  border-radius: 0;
+                  border-bottom: 2px solid $tabviewHeaderActiveBorderColor !important;
+              }
+          }
+      }
+  }
+
+  .p-tabview-close {
+      margin-left: $inlineSpacing;
+  }
+  
+  .p-tabview-nav-btn.p-link {
+      background: $tabviewHeaderActiveBg;
+      color: $tabviewHeaderTextActiveColor;
+      width: $buttonIconOnlyWidth;
+      box-shadow: $raisedButtonShadow;
+      border-radius: 0;
+
+      &:focus-visible {
+          @include focused-inset();
+      }
+  }
+
+  .p-tabview-panels {
+      background: $tabviewContentBg;
+      padding: $tabviewContentPadding;
+      border: $tabviewContentBorder;
+      color: $tabviewContentTextColor;
+      border-bottom-right-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
+  }
+}
+
+
+.tabview-header {
+    display: inline-flex;
+    gap: 1rem;
+    align-items: center;
+    margin-right: 1rem;
+    color: #515151;
+    opacity: 0.7;
+    padding-bottom: 1.125rem;
+    // box-sizing: border-box;
+}
+
+.tabview-header-active {
+    padding-bottom: 1.125rem;
+    border-bottom: 2px solid #0AFFA5;
+    color: #333333;
+    font-weight: 500;
+    opacity: 1;
+    transition: all 0.3s ease;
+}

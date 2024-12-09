@@ -41,6 +41,8 @@
         height: $paginatorElementHeight;
 
         .p-dropdown-label {
+            display: inline-flex;
+            align-items: center;
             padding-right: 0;
         }
     }

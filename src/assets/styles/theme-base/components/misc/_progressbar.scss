@@ -14,4 +14,9 @@
         color: $progressBarValueTextColor;
         line-height: $progressBarHeight;
     }
+    &.p-datatable-progress-bar {
+        background: #F2F2F2;
+        height: 1rem;
+    }
 }
+
