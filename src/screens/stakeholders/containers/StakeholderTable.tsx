@@ -1,78 +1,76 @@
 "use client";
 import { ChangeEvent, type FC, useEffect, useRef, useState } from "react";
-import { TabPanel, TabView } from "primereact/tabview";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+
+import { Badge } from "primereact/badge";
+import { Button } from "primereact/button";
+import { Checkbox } from "primereact/checkbox";
+import { Column } from "primereact/column";
 import {
   DataTable,
   DataTableSelectionMultipleChangeEvent,
   DataTableStateEvent,
   DataTableValueArray,
 } from "primereact/datatable";
-import { Button } from "primereact/button";
-import { Badge } from "primereact/badge";
-import { Column } from "primereact/column";
+import { InputText } from "primereact/inputtext";
+import { Menu } from "primereact/menu";
+import { ProgressBar } from "primereact/progressbar";
+import { TabPanel, TabView } from "primereact/tabview";
 import { classNames } from "primereact/utils";
-import { useDispatch, useSelector } from "react-redux";
+
+import { paginatorTemplate } from "@/components";
+import { PAGE_SIZE } from "@/constants/general";
 import { appSelector } from "@/store";
 import { type AppDispatch } from "@/core/rootStore";
-import {
-  IDataValues,
-  IDataValuesParams,
-  getValuesList,
-} from "@/store/dataValues";
-import { PAGE_SIZE } from "@/constants/general";
-import { InputText } from "primereact/inputtext";
 import SortableHeader from "@/utils/dataTable/SortableHeader";
-import { Menu } from "primereact/menu";
-import { Checkbox } from "primereact/checkbox";
-import { ProgressBar } from "primereact/progressbar";
 import {
-  PaginatorNextPageLinkOptions,
-  PaginatorPrevPageLinkOptions,
-} from "primereact/paginator";
+  IStakeholder,
+  IStakeholderListParams,
+  getListAll,
+  resetMeta,
+} from "@/store/stakeholder";
 
-const paginatorTemplate = {
-  layout:
-    "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
-  PrevPageLink: (options: PaginatorPrevPageLinkOptions) => {
-    return (
-      <button
-        type="button"
-        className={classNames(options.className, "border-round-sm h-2rem px-3")}
-        onClick={options.onClick}
-        disabled={options.disabled}
-      >
-        Previous
-      </button>
-    );
-  },
-  NextPageLink: (options: PaginatorNextPageLinkOptions) => {
-    return (
-      <button
-        type="button"
-        className={classNames(options.className, "border-round-sm h-2rem px-3")}
-        onClick={options.onClick}
-        disabled={options.disabled}
-      >
-        Next
-      </button>
-    );
-  },
-};
-
-const TableWithTabs: FC = () => {
+const StakeholderTable: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const {
-    dataValues: { meta, isLoading, values },
+    stakeholder: { meta, isLoading, allStakeholders },
   } = useSelector(appSelector);
 
   const allColumns = [
-    { field: "value", header: "Value", sortable: true },
-    { field: "mergingOf", header: "Merging of", sortable: true },
-    { field: "occurredIn", header: "Occurred in", sortable: true },
-    { field: "approvedRatings", header: "% Approved Ratings", sortable: true },
-    { field: "allRatings", header: "% All Ratings", sortable: true },
-    { field: "typeLabel", header: "Type label", sortable: true },
+    {
+      field: "stakeholderName",
+      header: "Stakeholder",
+      sortable: true,
+      width: "12%",
+    },
+    {
+      field: "affiliation",
+      header: "Affiliation",
+      sortable: true,
+      width: "12%",
+    },
+    {
+      field: "stakeholderType",
+      header: "Profile type",
+      sortable: true,
+      width: "12%",
+    },
+    { field: "mergingOf", header: "Merging of", sortable: true, width: "15%" },
+    {
+      field: "occurredIn",
+      header: "Occurred in",
+      sortable: true,
+      width: "15%",
+    },
+    {
+      field: "approvedRating",
+      header: "% Approved Rtg",
+      sortable: true,
+      width: "15%",
+    },
+    { field: "rating", header: "% All Rtg", sortable: true, width: "15%" },
   ];
 
   const [sortField, setSortField] = useState("");
@@ -85,24 +83,26 @@ const TableWithTabs: FC = () => {
   //   Record<string, { sortField: string; sortOrder: string }>
   // >({});
   const [visibleColumns, setVisibleColumns] = useState<string[]>([
-    "value",
+    "stakeholderName",
+    "affiliation",
+    "stakeholderType",
     "mergingOf",
     "occurredIn",
-    "approvedRatings",
-    "allRatings",
-    "typeLabel",
+    "approvedRating",
+    "rating",
   ]);
 
   const menu = useRef<Menu>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    const payload = {} as IDataValuesParams;
-    dispatch(getValuesList(payload));
+    const payload = {} as IStakeholderListParams;
+    dispatch(getListAll(payload));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getListParams = () => {
-    const listParams: IDataValuesParams = {};
+    const listParams: IStakeholderListParams = {};
     return listParams;
   };
 
@@ -111,56 +111,56 @@ const TableWithTabs: FC = () => {
     const payload = getListParams();
     payload.page = (event?.page ?? 0) + 1;
     payload.pageSize = newPageSize;
-    console.log(payload);
     setPageSize(newPageSize);
-    dispatch(getValuesList(payload));
+    dispatch(getListAll(payload));
   };
 
-  const approvedRatingsTemplate = (rowData: IDataValues) => {
-    const color = rowData.approvedRatings < 50 ? "#F71014" : "#0AFFA5";
+  const approvedRatingTemplate = (rowData: IStakeholder) => {
+    const color = rowData.approvedRating < 50 ? "#F71014" : "#0AFFA5";
     return (
       <div className="flex align-items-center gap-3">
-        <span className="text-gray-900 text-sm">
-          {rowData.approvedRatings}%
-        </span>
+        <span className="text-gray-900 text-sm">{rowData.approvedRating}%</span>
         <ProgressBar
           color={color}
-          value={rowData.approvedRatings}
+          value={rowData.approvedRating}
           showValue={false}
           className="h-1rem border-noround w-full"
         />
       </div>
     );
   };
-  const allRatingsTemplate = (rowData: IDataValues) => {
-    const color = rowData.approvedRatings < 50 ? "#F71014" : "#0AFFA5";
+  const ratingTemplate = (rowData: IStakeholder) => {
+    const color = rowData.approvedRating < 50 ? "#F71014" : "#0AFFA5";
     return (
       <div className="flex align-items-center gap-3">
-        <span className="text-gray-900 text-sm">{rowData.allRatings}%</span>
+        <span className="text-gray-900 text-sm">{rowData.rating}%</span>
         <ProgressBar
           color={color}
-          value={rowData.allRatings}
+          value={rowData.rating}
           showValue={false}
           className="h-1rem border-noround w-full"
         />
       </div>
     );
   };
-  const typeLabelTemplate = (rowData: IDataValues) => {
+  const stakeholderNameTemplate = (rowData: IStakeholder) => {
     return (
-      <div className="flex justify-content-center p-2 border-round-3xl border-gray-700 border-1">
-        {rowData.typeLabel}
+      <div
+        onClick={() => router.push("/data-review/stakeholders/" + rowData.id)}
+        className="flex cursor-pointer"
+      >
+        {rowData.stakeholderName}
       </div>
     );
   };
 
   const columnTemplates: Record<
     string,
-    (data: IDataValues) => JSX.Element | string
+    (data: IStakeholder) => JSX.Element | string
   > = {
-    approvedRatings: (rowData) => approvedRatingsTemplate(rowData),
-    allRatings: (rowData) => allRatingsTemplate(rowData),
-    typeLabel: (rowData) => typeLabelTemplate(rowData),
+    approvedRating: (rowData) => approvedRatingTemplate(rowData),
+    rating: (rowData) => ratingTemplate(rowData),
+    stakeholderName: (rowData) => stakeholderNameTemplate(rowData),
   };
 
   const onSort = (field: string) => {
@@ -215,21 +215,16 @@ const TableWithTabs: FC = () => {
       const payload = getListParams();
       if (!sortField && !sortOrder) {
         payload.search = e.target.value;
-        dispatch(getValuesList(payload));
+        dispatch(getListAll(payload));
       } else {
         payload.search = e.target.value;
         payload.sortBy = sortField;
         payload.sortOrder = sortOrder;
-        dispatch(getValuesList(payload));
+        dispatch(getListAll(payload));
       }
     }
     setSearch(e.target.value);
   };
-
-  console.log("sortField", sortField);
-  console.log("sortOrder", sortOrder);
-
-  console.log(meta);
 
   return (
     <>
@@ -240,14 +235,17 @@ const TableWithTabs: FC = () => {
             onTabChange={(e) => setActiveIndex(e.index)}
             className="with-border"
           >
-            {values.map(({ status, data }) => (
+            {allStakeholders?.map(({ status, data }) => (
               <TabPanel
                 key={status}
                 header={status}
                 headerTemplate={(options) => {
                   return (
                     <div
-                      onClick={options.onClick}
+                      onClick={(params) => {
+                        options.onClick(params);
+                        dispatch(resetMeta());
+                      }}
                       className={classNames("cursor-pointer tabview-header", {
                         "tabview-header-active": options.selected,
                       })}
@@ -278,13 +276,14 @@ const TableWithTabs: FC = () => {
                     selectionMode={"checkbox"}
                     selection={selectedRows}
                     onPage={onPage}
+                    className="p-plain-datatable"
                     onSelectionChange={(
                       e: DataTableSelectionMultipleChangeEvent<DataTableValueArray>
                     ) => setSelectedRows(e.value)}
                   >
                     <Column
                       selectionMode="multiple"
-                      headerStyle={{ width: "3rem" }}
+                      headerStyle={{ width: "3%" }}
                     ></Column>
                     {allColumns
                       .filter((col) => visibleColumns.includes(col.field))
@@ -305,6 +304,7 @@ const TableWithTabs: FC = () => {
                               col.header
                             )
                           }
+                          style={{ width: col.width }}
                           body={(rowData) =>
                             columnTemplates[col.field]
                               ? columnTemplates[col.field](rowData)
@@ -335,7 +335,7 @@ const TableWithTabs: FC = () => {
               <InputText
                 type="text"
                 placeholder="Search"
-                className="w-full gray-300 bg-gray-300"
+                className="w-full gray-300 bg-gray-100"
                 value={search}
                 onChange={onSearch}
               />
@@ -353,7 +353,7 @@ const TableWithTabs: FC = () => {
                             className={classNames(
                               "flex align-items-center gap-3 p-2 border-round-lg",
                               {
-                                "bg-blue-200": visibleColumns.includes(
+                                "bg-green-100": visibleColumns.includes(
                                   col.field
                                 ),
                               }
@@ -362,9 +362,7 @@ const TableWithTabs: FC = () => {
                             <Checkbox
                               inputId={col.field}
                               value={col.field}
-                              onChange={(e) =>
-                                toggleColumnVisibility(col.field)
-                              }
+                              onChange={() => toggleColumnVisibility(col.field)}
                               checked={visibleColumns.includes(col.field)}
                             />
                             <label htmlFor={col.field}>{col.header}</label>
@@ -386,7 +384,7 @@ const TableWithTabs: FC = () => {
             </div>
           </div>
           {selectedRows.length > 0 && (
-            <div className="p-5 bg-green-50 w-full fixed bottom-0 left-0">
+            <div className="p-5 bg-green-200 w-full fixed bottom-0 left-0">
               <div className="flex justify-content-between align-items-center">
                 <span className="text-gray-900">
                   {selectedRows.length}{" "}
@@ -415,4 +413,4 @@ const TableWithTabs: FC = () => {
   );
 };
 
-export default TableWithTabs;
+export default StakeholderTable;

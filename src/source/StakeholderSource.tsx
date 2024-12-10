@@ -1,19 +1,31 @@
+import { IStakeholderListParams } from "@/store/stakeholder";
 import {
+  getAllStakeholders,
   getStakeholderDocuments,
   getStakeholderMergingOf,
   getStakeholderPolling,
   getStakeholderTranscripts,
+  getStakeholders,
 } from "@/utils/fakeGenerator/stakeholder";
 
-export const getList = async () => {
-  return [
-    { id: "1", name: "Stakeholder 1" },
-    { id: "2", name: "Stakeholder 2" },
-  ];
+export const getListAll = async (payload: IStakeholderListParams) => {
+  return {
+    content: getAllStakeholders(50),
+    totalElements: 50,
+    pageNumber: payload.page || 1,
+  };
+};
+
+export const getList = async (payload: IStakeholderListParams) => {
+  return {
+    content: getStakeholders(50),
+    totalElements: 50,
+    pageNumber: payload.page || 1,
+  };
 };
 
 export const get = async (payload: string) => {
-  return { id: "1", name: "Stakeholder 1" };
+  return getStakeholders(1)[0];
 };
 
 export const getValues = async (payload: string) => {

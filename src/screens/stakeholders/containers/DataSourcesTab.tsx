@@ -11,9 +11,7 @@ import {
   getStakeholderPolling,
   getStakeholderTranscripts,
 } from "@/store/stakeholder";
-import StakeholderRatings from "../charts/ValueRatings";
-import ScatterPlotMinimal from "../charts/ScatterPlot";
-import { CardComponent, CardTitle } from "@/components";
+import { CardComponent } from "@/components";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { ProgressBar } from "primereact/progressbar";

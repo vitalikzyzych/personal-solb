@@ -255,7 +255,7 @@ const FilterBar: FC<IFilterBar> = ({ onVisibleChange, visible }) => {
         </div>
 
         {/* Footer */}
-        <div className="bg-blue-100 mt-5" style={{ padding: "1.25rem" }}>
+        <div className="bg-green-500 mt-5" style={{ padding: "1.25rem" }}>
           <div className="flex justify-content-between align-items-center gap-3">
             <div className="flex flex-column">
               <p className="m-0 font-semibold">Current selection</p>

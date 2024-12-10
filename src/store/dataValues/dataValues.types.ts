@@ -24,3 +24,12 @@ export interface IDataValuesResponse {
   totalElements: number;
   pageNumber: number;
 }
+
+export interface IProfileCardData {
+  id: string;
+  title: string;
+  status: string;
+  value: number;
+  approvedRatings: number;
+  allRatings: number;
+}

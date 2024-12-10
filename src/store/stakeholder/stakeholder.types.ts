@@ -1,6 +1,34 @@
 export interface IStakeholder {
   id: string;
-  name?: string;
+  affiliation: string;
+  approvedRating: number;
+  mergingOf: string[];
+  occurredIn: string[];
+  rating: number;
+  status?: string;
+  stakeholderName: string;
+  stakeholderType: string;
+  updatedDate: string;
+}
+
+export interface IStakeholderListResponse {
+  content: IStakeholder[];
+  totalElements: number;
+  pageNumber: number;
+}
+
+export interface IStakeholderListAllResponse {
+  content: { status: string; data: IStakeholder[] }[];
+  totalElements: number;
+  pageNumber: number;
+}
+
+export interface IStakeholderListParams {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+  sortBy?: string;
+  sortOrder?: string;
 }
 
 export interface IStakeholderIdentity {

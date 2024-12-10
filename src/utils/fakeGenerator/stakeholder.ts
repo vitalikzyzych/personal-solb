@@ -1,4 +1,5 @@
 import {
+  IStakeholder,
   IStakeholderDocument,
   IStakeholderMergingOf,
   IStakeholderPolling,
@@ -103,7 +104,6 @@ export const getStakeholderMergingOf = (
   const fakeData: IStakeholderMergingOf[] = [];
   const possibleMergingOf = ["none", "noise", "noise disturbance"];
   const documents = Array.from({ length: 100 }, (_, i) => `Document ${i + 1}`);
-
   const getRandomInt = (min: number, max: number): number =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -114,7 +114,6 @@ export const getStakeholderMergingOf = (
     Array.from({ length: count }, () => getRandomElement(array)).filter(
       (value, index, self) => self.indexOf(value) === index
     );
-
   for (let i = 0; i < count; i++) {
     const document: IStakeholderMergingOf = {
       id: uuidv4(), // Generate a random ID
@@ -129,4 +128,51 @@ export const getStakeholderMergingOf = (
   }
 
   return fakeData;
+};
+
+export const getStakeholders = (
+  count: number,
+  status?: string
+): IStakeholder[] => {
+  const fakeData: IStakeholder[] = [];
+  const possibleMergingOf = ["none", "noise", "noise disturbance"];
+  const documents = Array.from({ length: 100 }, (_, i) => `Document ${i + 1}`);
+  const getRandomInt = (min: number, max: number): number =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+
+  const getRandomElement = <T>(array: T[]): T =>
+    array[getRandomInt(0, array.length - 1)];
+
+  const getRandomElements = <T>(array: T[], count: number): T[] =>
+    Array.from({ length: count }, () => getRandomElement(array)).filter(
+      (value, index, self) => self.indexOf(value) === index
+    );
+  for (let i = 0; i < count; i++) {
+    const document: IStakeholder = {
+      id: uuidv4(), // Generate a random ID
+      stakeholderName: generateRandomName(),
+      updatedDate: formatDate(new Date()), // Current date in ISO format
+      mergingOf: getRandomElements(possibleMergingOf, getRandomInt(1, 3)),
+      occurredIn: getRandomElements(documents, getRandomInt(1, 5)),
+      approvedRating: getRandomInt(5, 100),
+      affiliation: getRandomElement(["affiliation1", "affiliation2"]),
+      status: status || getRandomElement(["Approved", "Potential", "Rejected"]),
+      rating: getRandomInt(5, 100),
+      stakeholderType: getRandomElement(types), // Random privacy status
+    };
+
+    fakeData.push(document);
+  }
+
+  return fakeData;
+};
+
+export const getAllStakeholders = (
+  count: number
+): { status: string; data: IStakeholder[] }[] => {
+  const statuses = ["Approved", "Potential", "Rejected"];
+  return statuses.map((status) => ({
+    status,
+    data: getStakeholders(count, status),
+  }));
 };

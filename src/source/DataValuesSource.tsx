@@ -2,6 +2,7 @@ import {
   IDataValues,
   type IDataValuesParams,
   IDataValuesResponse,
+  IProfileCardData,
 } from "@/store/dataValues";
 import { processRequest } from "./processor";
 
@@ -17,6 +18,15 @@ export const getValuesList = async (payload: IDataValuesParams) => {
     pageNumber: payload.page || 1,
   };
   return res as IDataValuesResponse;
+};
+
+export const getProfielsList = async (payload: IDataValuesParams) => {
+  // const res = await processRequest({
+  //   url: 'bookings',
+  //   method: 'GET',
+  //   params: payload,
+  // });
+  return generateCardData(20);
 };
 
 const generateData = (count: number) => {
@@ -36,3 +46,32 @@ const generateData = (count: number) => {
     })) as IDataValues[],
   }));
 };
+
+function generateCardData(numberOfCards: number): IProfileCardData[] {
+  const statuses = ["approved", "potential"];
+  const titles = [
+    "Vermindering van geluidshinder en nog veel meer...",
+    "Verbetering van milieu en duurzaamheid",
+    "Kostenbesparing en efficiëntie",
+    "Betere samenwerking en betrokkenheid",
+    "Groei in technologische innovaties",
+  ];
+
+  const cards: IProfileCardData[] = [];
+
+  for (let i = 0; i < numberOfCards; i++) {
+    const titleIndex = i % titles.length;
+    const statusIndex = Math.floor(Math.random() * statuses.length);
+
+    cards.push({
+      id: i.toString(),
+      title: titles[titleIndex],
+      status: statuses[statusIndex],
+      value: Math.floor(Math.random() * 100) + 1, // random value between 1 and 100
+      approvedRatings: Math.floor(Math.random() * 100), // random percentage
+      allRatings: Math.floor(Math.random() * 100), // random percentage
+    });
+  }
+
+  return cards;
+}

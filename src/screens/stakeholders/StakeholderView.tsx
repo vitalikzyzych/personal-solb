@@ -5,16 +5,13 @@ import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AppDispatch } from "@/core/rootStore";
 import { appSelector } from "@/store";
-import { getTheme } from "@/store/settings";
-import { getCurrentTheme } from "@/constants/theme";
-import { generateClusterDataForRadialChart } from "@/utils/fakeData";
 import { getStakeholder } from "@/store/stakeholder";
 import { TabPanel, TabView } from "primereact/tabview";
-import Values from "./viewTabs/Values";
-import Relationships from "./viewTabs/Relationships";
-import DataSources from "./viewTabs/DataSources";
+import Values from "./containers/ValuesTab";
+import Relationships from "./containers/RelationshipsTab";
+import DataSources from "./containers/DataSourcesTab";
 import { solvChevronLeft } from "@/assets/svg/icons";
-import Identity from "./viewTabs/Identity";
+import Identity from "./containers/IdentityTab";
 
 interface IProps {
   id: string;
@@ -44,7 +41,7 @@ const StakeholderView: FC<IProps> = ({ id }) => {
             <span className="cursor-pointer mr-4" onClick={() => router.back()}>
               <FontAwesomeIcon icon={solvChevronLeft} />
             </span>
-            {stakeholder?.name}
+            {stakeholder?.stakeholderName}
             <span
               className="p-2 ml-2 text-white text-sm border-round-2xl"
               style={{ background: "#519560" }}

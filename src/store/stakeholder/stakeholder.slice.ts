@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {
   getList,
+  getListAll,
   getStakeholder,
   getStakeholderDocuments,
   getStakeholderIdentity,
@@ -14,12 +15,16 @@ import {
   IStakeholder,
   IStakeholderDocument,
   IStakeholderIdentity,
+  IStakeholderListAllResponse,
+  IStakeholderListResponse,
   IStakeholderMergingOf,
   IStakeholderPolling,
   IStakeholderTranscript,
 } from "./stakeholder.types";
+import { PaginatorMeta } from "@/types";
 
 interface IInitialSettingSliceState {
+  allStakeholders: { status: string; data: IStakeholder[] }[];
   isGetting: boolean;
   isGettingDocuments: boolean;
   isGettingIdentity: boolean;
@@ -36,9 +41,11 @@ interface IInitialSettingSliceState {
   stakeholderPolling: IStakeholderPolling[];
   stakeholderTranscripts: IStakeholderTranscript[];
   stakeholderValues: object;
+  meta: PaginatorMeta;
 }
 
 const initialState: IInitialSettingSliceState = {
+  allStakeholders: [],
   isGetting: true,
   isGettingDocuments: true,
   isGettingIdentity: true,
@@ -47,7 +54,12 @@ const initialState: IInitialSettingSliceState = {
   isGettingTranscripts: true,
   isGettingValues: true,
   isLoading: true,
-  stakeholder: { id: "" },
+  meta: {
+    page: 0,
+    pageSize: 10,
+    total: 0,
+  },
+  stakeholder: {} as IStakeholder,
   stakeholders: [],
   stakeholderDocuments: [],
   stakeholderIdentity: {},
@@ -60,13 +72,38 @@ const initialState: IInitialSettingSliceState = {
 const stakeholderSlice = createSlice({
   name: "stakeholder",
   initialState,
-  reducers: {},
+  reducers: {
+    resetMeta(state) {
+      state.meta.page = 0;
+    },
+  },
 
   extraReducers: (builder) => {
-    builder.addCase(getList.fulfilled, (state, { payload }) => {
-      state.stakeholders = payload;
+    builder.addCase(
+      getListAll.fulfilled,
+      (state, { payload }: { payload: IStakeholderListAllResponse }) => {
+        state.allStakeholders = payload.content;
+        state.isLoading = false;
+        state.meta.total = payload.totalElements;
+        state.meta.page = payload.pageNumber - 1;
+      }
+    );
+    builder.addCase(getListAll.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getListAll.rejected, (state) => {
       state.isLoading = false;
     });
+
+    builder.addCase(
+      getList.fulfilled,
+      (state, { payload }: { payload: IStakeholderListResponse }) => {
+        state.stakeholders = payload.content;
+        state.isLoading = false;
+        state.meta.total = payload.totalElements;
+        state.meta.page = payload.pageNumber - 1;
+      }
+    );
     builder.addCase(getList.pending, (state) => {
       state.isLoading = true;
     });
@@ -156,5 +193,7 @@ const stakeholderSlice = createSlice({
     });
   },
 });
+
+export const { resetMeta } = stakeholderSlice.actions;
 
 export default stakeholderSlice.reducer;

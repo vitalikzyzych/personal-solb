@@ -14,7 +14,7 @@ interface IProps {
 const Values: FC<IProps> = ({ id }) => {
   const dispatch = useDispatch<AppDispatch>();
   const {
-    stakeholder: { isGettingValues, stakeholderValues },
+    stakeholder: { isGettingValues },
   } = useSelector(appSelector);
 
   useEffect(() => {

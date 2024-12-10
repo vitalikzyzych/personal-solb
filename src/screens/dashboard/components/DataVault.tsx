@@ -50,7 +50,7 @@ const DataVault: FC = () => {
                 <p className="text-2xl font-medium text-gray-900">
                   {item.value}
                 </p>
-                <p className="text-sm text-green-200">
+                <p className="text-sm text-green-400">
                   {item.change} since last week
                 </p>
               </div>

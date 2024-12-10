@@ -1,7 +1,7 @@
 "use client";
 import { type FC } from "react";
-import { StatCard } from "./components/StatCard";
-import { ProgressCard } from "./components/ProgressCard";
+import { StatCard } from "./StatCard";
+import { ProgressCard } from "./ProgressCard";
 
 const statCardsData = [
   {

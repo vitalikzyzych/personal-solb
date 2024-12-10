@@ -32,7 +32,7 @@ const Notifications: FC = () => {
 
   const customizedMarker = () => {
     return (
-      <span className="w-0-5-rem h-0-5-rem bg-green-50 border-round"></span>
+      <span className="w-0-5-rem h-0-5-rem bg-green-200 border-round"></span>
     );
   };
 

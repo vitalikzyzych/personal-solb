@@ -31,14 +31,14 @@ export const StatCard: FC<IStatCard> = ({
         <div className="flex gap-1">
           <span className="text-6xl text-green-900 font-medium ">{metric}</span>
           {metricChange && (
-            <span className="align-self-end text-green-100 font-medium">
+            <span className="align-self-end text-green-300 font-medium">
               {" "}
               {metricChange} ▲
             </span>
           )}
         </div>
         {icon && (
-          <div className="flex justify-content-center align-items-center bg-blue-200 p-2 border-circle">
+          <div className="flex justify-content-center align-items-center bg-green-100 p-2 border-circle">
             <Image src={icon} alt="icon" width={28} height={28} />
           </div>
         )}
@@ -48,7 +48,7 @@ export const StatCard: FC<IStatCard> = ({
         <div className="col-4">
           <div className="flex justify-content-between">
             <div className="flex flex-column gap-2 align-items-center">
-              <span className="text-xl text-green-300 font-medium">
+              <span className="text-xl text-green-500 font-medium">
                 {approved}
               </span>
               <span className="text-gray-700">approved</span>

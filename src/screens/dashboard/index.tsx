@@ -10,7 +10,7 @@ import {
   Notifications,
   StakeholderDistribution,
   // StakeholdersProgress,
-} from "@/components";
+} from "./components";
 import { type Page } from "types";
 
 const Dashboard: Page = () => {

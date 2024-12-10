@@ -8,3 +8,10 @@ export const getValuesList = createAsyncThunk(
     return await DataValuesSource.getValuesList(payload);
   }
 );
+
+export const getProfilesList = createAsyncThunk(
+  "dataValues/getProfilesList",
+  async (payload: IDataValuesParams) => {
+    return await DataValuesSource.getProfielsList(payload);
+  }
+);

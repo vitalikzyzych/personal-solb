@@ -1,10 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { StakeholderSource } from "@/source";
+import { DataValuesSource, StakeholderSource } from "@/source";
 import { IGetParams } from "@/types";
+import { IStakeholderListParams } from "./stakeholder.types";
 
-export const getList = createAsyncThunk("stakeholder/getList", async () => {
-  return await StakeholderSource.getList();
-});
+export const getListAll = createAsyncThunk(
+  "stakeholder/getListAll",
+  async (payload: IStakeholderListParams) => {
+    return await StakeholderSource.getListAll(payload);
+  }
+);
+
+export const getList = createAsyncThunk(
+  "stakeholder/getList",
+  async (payload: IStakeholderListParams) => {
+    return await StakeholderSource.getList(payload);
+  }
+);
 
 export const getStakeholder = createAsyncThunk(
   "stakeholder/get",

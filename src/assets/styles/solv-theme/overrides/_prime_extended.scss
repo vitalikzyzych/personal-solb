@@ -1,3 +1,74 @@
+@media screen and (min-width: 1600px) {
+  .xl2\:col {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0.5rem;
+  }
+  .xl2\:col-fixed {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+  }
+  .xl2\:col-1 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 8.3333%;
+  }
+  .xl2\:col-2 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 16.6667%;
+  }
+  .xl2\:col-3 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 25%;
+  }
+  .xl2\:col-4 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 33.3333%;
+  }
+  .xl2\:col-5 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 41.6667%;
+  }
+  .xl2\:col-6 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 50%;
+  }
+  .xl2\:col-7 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 58.3333%;
+  }
+  .xl2\:col-8 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 66.6667%;
+  }
+  .xl2\:col-9 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 75%;
+  }
+  .xl2\:col-10 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 83.3333%;
+  }
+  .xl2\:col-11 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 91.6667%;
+  }
+  .xl2\:col-12 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 100%;
+  }
+}
 // .line-height-0 {
 //   line-height: 0;
 // }
@@ -634,77 +705,7 @@
 //   height: 8rem !important;
 // }
 
-// @media screen and (min-width: 1600px) {
-//   .xl2\:col {
-//     flex-grow: 1;
-//     flex-basis: 0;
-//     padding: 0.5rem;
-//   }
-//   .xl2\:col-fixed {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//   }
-//   .xl2\:col-1 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 8.3333%;
-//   }
-//   .xl2\:col-2 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 16.6667%;
-//   }
-//   .xl2\:col-3 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 25%;
-//   }
-//   .xl2\:col-4 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 33.3333%;
-//   }
-//   .xl2\:col-5 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 41.6667%;
-//   }
-//   .xl2\:col-6 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 50%;
-//   }
-//   .xl2\:col-7 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 58.3333%;
-//   }
-//   .xl2\:col-8 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 66.6667%;
-//   }
-//   .xl2\:col-9 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 75%;
-//   }
-//   .xl2\:col-10 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 83.3333%;
-//   }
-//   .xl2\:col-11 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 91.6667%;
-//   }
-//   .xl2\:col-12 {
-//     flex: 0 0 auto;
-//     padding: 0.5rem;
-//     width: 100%;
-//   }
-// }
+
 // .min-w-7rem {
 //   min-width: 7rem !important;
 // }

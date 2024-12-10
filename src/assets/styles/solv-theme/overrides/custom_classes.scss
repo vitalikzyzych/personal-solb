@@ -56,3 +56,16 @@
   @include text-wrap-lines;
   -webkit-line-clamp: 10;
 }
+
+.card {
+  background: var(--surface-0);
+  border: none;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  box-shadow: none;
+  border-radius: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

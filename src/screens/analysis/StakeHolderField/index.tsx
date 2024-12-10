@@ -4,11 +4,11 @@ import {
   FilterBar,
   ScatterPlot,
   StakeHolderHorizontalChart,
-  StakeholderRatings,
-} from "@/components";
+} from "./components";
 import Image from "next/image";
 import { Button } from "primereact/button";
 import { type Page } from "types";
+import { StakeholderRatings } from "@/screens/dashboard/components";
 
 const StakeHolderFieldPage: Page = () => {
   const [visible, setVisible] = useState(false);
@@ -31,7 +31,7 @@ const StakeHolderFieldPage: Page = () => {
             label="Filter"
             icon="pi pi-sliders-h"
             badge="2"
-            className="flex-shrink-0 p-3 bg-green-50 text-gray-900 border-none"
+            className="flex-shrink-0 p-3 bg-green-200 text-gray-900 border-none"
             badgeClassName="text-gray-900"
             onClick={() => setVisible(true)}
           />

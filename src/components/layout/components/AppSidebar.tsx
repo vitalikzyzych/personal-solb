@@ -3,6 +3,7 @@ import AppMenu from "./AppMenu";
 import { LayoutContext } from "../context/layoutcontext";
 import { MenuProvider } from "../context/menucontext";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const AppSidebar = (props: { sidebarRef: React.RefObject<HTMLDivElement> }) => {
   const { layoutConfig, setLayoutState, layoutState } =
@@ -55,7 +56,12 @@ const AppSidebar = (props: { sidebarRef: React.RefObject<HTMLDivElement> }) => {
       >
         <div className="sidebar-header flex justify-content-center relative">
           <a onClick={navigateToDashboard} className="app-logo cursor-pointer">
-            <img className="w-3rem h-3rem" src="/solv-logo.png" alt="Profile" />
+            <Image
+              src="/layout/images/menu_logo.png"
+              alt="Profile"
+              width={64}
+              height={20}
+            />
           </a>
 
           <button

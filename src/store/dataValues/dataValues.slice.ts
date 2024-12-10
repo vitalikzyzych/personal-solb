@@ -1,21 +1,35 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { type IDataValues, IDataValuesResponse } from "./dataValues.types";
+import { createSlice } from "@reduxjs/toolkit";
+import type {
+  IDataValues,
+  IDataValuesResponse,
+  IProfileCardData,
+} from "./dataValues.types";
 import { type PaginatorMeta } from "@/types";
-import { getValuesList } from "./dataValues.actions";
+import { getProfilesList, getValuesList } from "./dataValues.actions";
 
 interface IState {
   isLoading: boolean;
+  isProfilesLoading: boolean;
   values: {
     data: IDataValues[];
     status: string;
   }[];
+  profiles: IProfileCardData[];
   meta: PaginatorMeta;
+  metaProfiles: PaginatorMeta;
 }
 
 const initialState: IState = {
   isLoading: false,
+  isProfilesLoading: false,
   values: [],
+  profiles: [],
   meta: {
+    page: 1,
+    pageSize: 10,
+    total: 0,
+  },
+  metaProfiles: {
     page: 1,
     pageSize: 10,
     total: 0,
@@ -25,7 +39,11 @@ const initialState: IState = {
 const dataValuesSlice = createSlice({
   name: "dataValues",
   initialState,
-  reducers: {},
+  reducers: {
+    resetMeta(state) {
+      state.meta.page = 0;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getValuesList.pending, (state) => {
       state.isLoading = true;
@@ -44,8 +62,24 @@ const dataValuesSlice = createSlice({
     builder.addCase(getValuesList.rejected, (state) => {
       state.isLoading = false;
     });
+    builder.addCase(getProfilesList.pending, (state) => {
+      state.isProfilesLoading = true;
+    });
+    builder.addCase(
+      getProfilesList.fulfilled,
+      (state, { payload }: { payload: IProfileCardData[] }) => {
+        state.isProfilesLoading = false;
+        state.profiles = payload;
+        state.metaProfiles.total = payload.length;
+        state.metaProfiles.page = 0;
+      }
+    );
+    builder.addCase(getProfilesList.rejected, (state) => {
+      state.isProfilesLoading = false;
+    });
   },
 });
 
+export const { resetMeta } = dataValuesSlice.actions;
 export const dataValuesReducer = dataValuesSlice.reducer;
 export default dataValuesReducer;

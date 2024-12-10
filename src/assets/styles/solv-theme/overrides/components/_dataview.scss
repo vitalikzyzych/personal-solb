@@ -1,0 +1,63 @@
+.p-dataview {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  .p-paginator-top {
+      border-width: $tableTopPaginatorBorderWidth;
+      border-radius: 0;
+  }
+
+  .p-paginator-bottom {
+      border-width: $tableBottomPaginatorBorderWidth;
+      border-radius: 0;
+  }
+
+  .p-dataview-header {
+      background: $tableHeaderBg;
+      color: $tableHeaderTextColor;
+      border: $tableHeaderBorder;
+      border-width: $tableHeaderBorderWidth;
+      padding: $tableHeaderPadding;
+      font-weight: $tableHeaderFontWeight;
+  }
+
+  .p-dataview-content {
+      background: none;
+      width: 100%;
+      color: $tableBodyRowTextColor;
+      border-width: 0;
+      border-image-width: 0;
+  }
+
+  &.p-dataview-list {
+      .p-dataview-content {
+          > .p-grid > div {
+              border: none;
+          }
+      }
+  }
+
+  .p-dataview-footer {
+      background: $tableFooterBg;
+      color: $tableFooterTextColor;
+      border: $tableFooterBorder;
+      border-width: $tableFooterBorderWidth;
+      padding: $tableFooterPadding;
+      font-weight: $tableFooterFontWeight;
+      border-bottom-left-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+  }
+
+  .p-dataview-loading-icon {
+      font-size: $loadingIconFontSize;
+
+      &.p-icon {
+          width: $loadingIconFontSize;
+          height: $loadingIconFontSize;
+      }
+  }
+
+  .p-paginator {
+    background: transparent;
+  }
+}

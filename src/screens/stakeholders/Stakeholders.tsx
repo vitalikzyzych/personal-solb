@@ -1,25 +1,40 @@
 "use client";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
+import Image from "next/image";
 import { TabPanel, TabView } from "primereact/tabview";
-import StakeholdersOverview from "./StakeholdersOverview";
+import Overview from "./containers/Overview";
+import Profiles from "./containers/Profiles";
 
 const Stakeholders: FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  useEffect(() => {}, []);
   return (
-    <div className="w-full">
-      <div className="flex align-items-center justify-content-between flex-column">
+    <div className="grid">
+      <div className="col-12">
+        <div className="flex justify-content-between a;ign-items-center mb-5">
+          <div className="flex align-items-center gap-5 ">
+            <Image
+              src="/layout/images/search-paper.svg"
+              alt="icon"
+              width={32}
+              height={32}
+            />
+            <div className="text-4xl font-medium text-gray-900">
+              Stakeholders
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-12">
         <TabView
           activeIndex={activeIndex}
           onTabChange={(e) => setActiveIndex(e.index)}
           className="w-full"
         >
           <TabPanel header="Overview">
-            <StakeholdersOverview />
+            <Overview />
           </TabPanel>
           <TabPanel header="Profiles">
-            <div className="card">Profiles</div>
+            <Profiles />
           </TabPanel>
         </TabView>
       </div>

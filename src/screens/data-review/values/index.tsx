@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
-import { type Page } from "@/types";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { TabPanel, TabView } from "primereact/tabview";
-import { ValuesOverviewTab } from "@/components";
+import { ValuesOverviewTab } from "./components";
+import { type Page } from "@/types";
+import ValuesProfilesTab from "./viewTabs/ValuesProfilesTab";
 
 const Values: Page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -31,7 +32,9 @@ const Values: Page = () => {
           <TabPanel header="Overview">
             <ValuesOverviewTab />
           </TabPanel>
-          <TabPanel header="Profiles">Profiles</TabPanel>
+          <TabPanel header="Profiles">
+            <ValuesProfilesTab />
+          </TabPanel>
         </TabView>
       </div>
     </div>

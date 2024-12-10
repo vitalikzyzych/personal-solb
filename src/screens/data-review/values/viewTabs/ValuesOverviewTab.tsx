@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "primereact/card";
 import { type FC } from "react";
-import TableWithTabs from "./components/TableWithTabs";
+import TableWithTabs from "../components/TableWithTabs";
 
 const ValuesOverviewTab: FC = () => {
   return (
