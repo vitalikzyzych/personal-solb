@@ -8,14 +8,17 @@ import type {
 import { type PaginatorMeta } from "@/types";
 import {
   getProfilesList,
+  getValueDocuments,
   getValuesHistory,
   getValuesList,
 } from "./dataValues.actions";
+import { IStakeholderDocument } from "../stakeholder";
 
 interface IState {
   isLoading: boolean;
   isLoadingHistory: boolean;
   isProfilesLoading: boolean;
+  isGettingDocuments: boolean;
   values: {
     data: IDataValues[];
     status: string;
@@ -23,6 +26,7 @@ interface IState {
   profiles: IProfileCardData[];
   meta: PaginatorMeta;
   metaProfiles: PaginatorMeta;
+  valueDocuments: IStakeholderDocument[];
   history: IHistoryItem[];
 }
 
@@ -30,9 +34,11 @@ const initialState: IState = {
   isLoading: false,
   isLoadingHistory: false,
   isProfilesLoading: false,
+  isGettingDocuments: false,
   history: [],
   values: [],
   profiles: [],
+  valueDocuments: [],
   meta: {
     page: 1,
     pageSize: 10,
@@ -88,8 +94,18 @@ const dataValuesSlice = createSlice({
       state.isProfilesLoading = false;
     });
 
-    builder.addCase(getValuesHistory.pending, (state) => {
-      state.isLoadingHistory = true;
+    builder.addCase(getValueDocuments.fulfilled, (state, { payload }) => {
+      state.valueDocuments = payload;
+      state.isGettingDocuments = false;
+    });
+    builder.addCase(getValueDocuments.pending, (state) => {
+      state.isGettingDocuments = true;
+    });
+    builder.addCase(getValueDocuments.rejected, (state) => {
+      state.isGettingDocuments = false;
+      builder.addCase(getValuesHistory.pending, (state) => {
+        state.isLoadingHistory = true;
+      });
     });
     builder.addCase(
       getValuesHistory.fulfilled,

@@ -19,3 +19,21 @@ export function darkenColor(hexColor: string, amount = 20) {
 
   return darkenedColor;
 }
+
+// Example usage:
+console.log(darkenColor("#e1bee7")); // Output: A slightly darker version of #e1bee7
+
+export const getBgColor = (status: string) => {
+  switch (status) {
+    case "shared":
+      return "#0AFFA5";
+
+    case "nda":
+      return "#12402E";
+
+    case "confidential":
+      return "#3C8E6E";
+    default:
+      return "#0AFFA5";
+  }
+};

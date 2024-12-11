@@ -15,21 +15,7 @@ import { CardComponent } from "@/components";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { ProgressBar } from "primereact/progressbar";
-
-const getBgColor = (status: string) => {
-  switch (status) {
-    case "shared":
-      return "#0AFFA5";
-
-    case "nda":
-      return "#12402E";
-
-    case "confidential":
-      return "#3C8E6E";
-    default:
-      return "#0AFFA5";
-  }
-};
+import { getBgColor } from "@/utils/helpers/color";
 
 interface IProps {
   id: string;

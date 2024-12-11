@@ -6,6 +6,7 @@ import {
 } from "@/store/dataValues";
 import { processRequest } from "./processor";
 import { generateFakeHistoryItems } from "@/utils/values/values";
+import { getStakeholderDocuments } from "@/utils/values/stakeholder";
 
 export const getValuesList = async (payload: IDataValuesParams) => {
   // const res = await processRequest({
@@ -37,6 +38,10 @@ export const getProfielsList = async (payload: IDataValuesParams) => {
   //   params: payload,
   // });
   return generateCardData(20);
+};
+
+export const getDocuments = async (payload: string) => {
+  return getStakeholderDocuments(20);
 };
 
 const generateData = (count: number) => {

@@ -145,7 +145,7 @@ const HistoryTimelineSidebar = () => {
         visible={visible}
         position="right"
         onHide={() => setVisible(false)}
-        className="timeline-sidebar w-25rem"
+        className="timeline-sidebar  w-25rem lg:w-30rem"
         header={<div className="text-xl font-medium">History</div>}
       >
         <div className="history-timeline">
