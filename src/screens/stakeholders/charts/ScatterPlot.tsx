@@ -107,7 +107,6 @@ const TradeOffChart: FC = () => {
             position: "top",
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formatter: (params: any) => {
-              console.log(params.data);
               if (params.data[1] !== 0) {
                 return "";
               } else {
@@ -145,7 +144,6 @@ const TradeOffChart: FC = () => {
             position: "top",
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formatter: (params: any) => {
-              console.log(params.data);
               if (params.data[0] !== 0) {
                 return "";
               } else {

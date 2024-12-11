@@ -19,6 +19,3 @@ export function darkenColor(hexColor: string, amount = 20) {
 
   return darkenedColor;
 }
-
-// Example usage:
-console.log(darkenColor("#e1bee7")); // Output: A slightly darker version of #e1bee7

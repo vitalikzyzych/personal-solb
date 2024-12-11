@@ -5,6 +5,11 @@ import { TabPanel, TabView } from "primereact/tabview";
 import { ValuesOverviewTab } from "./components";
 import { type Page } from "@/types";
 import ValuesProfilesTab from "./viewTabs/ValuesProfilesTab";
+import { Sidebar } from "primereact/sidebar";
+import { Card } from "primereact/card";
+import { Divider } from "primereact/divider";
+import { Button } from "primereact/button";
+import HistoryTimeline from "./components/Timeline";
 
 const Values: Page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,6 +28,7 @@ const Values: Page = () => {
           </div>
         </div>
       </div>
+      <HistoryTimeline />
       <div className="col-12">
         <TabView
           activeIndex={activeIndex}

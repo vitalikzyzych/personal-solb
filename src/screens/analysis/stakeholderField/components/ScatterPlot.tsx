@@ -155,7 +155,6 @@ const ScatterPlot: FC = () => {
           // formatter: (value: number) => {
           //   const min = Math.min(...scatterData.map((d) => d.y));
           //   const max = Math.max(...scatterData.map((d) => d.y));
-          //   console.log(min, max);
 
           //   if (value === min) return "No Important";
           //   if (value === max) return "Very Important";

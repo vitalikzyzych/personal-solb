@@ -33,6 +33,26 @@
         }
     }
 }
+.history-timeline {
+    .p-timeline {
+        .p-timeline-event-connector {
+            background-color: var(--gray-900)!important;
+        }
+
+        &.p-timeline-vertical {
+
+            .p-timeline-event-connector {
+                width: 1px!important;
+                margin: 8px 0;
+            }
+        }
+        .p-timeline-event-content {
+            padding-bottom: 16px!important;
+        }
+    }
+}
+
+
 
 
 

@@ -45,8 +45,6 @@ const MultiCenterChart: FC<{ theme: string }> = ({ theme }) => {
     setSelectedCluster(null); // Reset any selected cluster
     setTopPoints(null); // Reset top points filter
   };
-
-  console.log(clusterData);
   const chartRef = useRef(null);
   const [selectedCluster, setSelectedCluster] = useState(null); // Track selected cluster
   const [showLabels, setShowLabels] = useState(true); // Toggle labels visibility
@@ -201,7 +199,6 @@ const MultiCenterChart: FC<{ theme: string }> = ({ theme }) => {
         setSelectedCluster(null);
         setTopPoints(null);
       } else {
-        console.log(params);
         const clickedClusterName = params.seriesName;
         setSelectedCluster(clickedClusterName);
       }

@@ -134,7 +134,6 @@ const stakeholderSlice = createSlice({
     });
 
     builder.addCase(getStakeholderIdentity.fulfilled, (state, { payload }) => {
-      console.log(payload);
       state.stakeholderIdentity = payload;
       state.isGettingIdentity = false;
     });

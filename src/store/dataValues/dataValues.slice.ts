@@ -2,13 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import type {
   IDataValues,
   IDataValuesResponse,
+  IHistoryItem,
   IProfileCardData,
 } from "./dataValues.types";
 import { type PaginatorMeta } from "@/types";
-import { getProfilesList, getValuesList } from "./dataValues.actions";
+import {
+  getProfilesList,
+  getValuesHistory,
+  getValuesList,
+} from "./dataValues.actions";
 
 interface IState {
   isLoading: boolean;
+  isLoadingHistory: boolean;
   isProfilesLoading: boolean;
   values: {
     data: IDataValues[];
@@ -17,11 +23,14 @@ interface IState {
   profiles: IProfileCardData[];
   meta: PaginatorMeta;
   metaProfiles: PaginatorMeta;
+  history: IHistoryItem[];
 }
 
 const initialState: IState = {
   isLoading: false,
+  isLoadingHistory: false,
   isProfilesLoading: false,
+  history: [],
   values: [],
   profiles: [],
   meta: {
@@ -62,6 +71,7 @@ const dataValuesSlice = createSlice({
     builder.addCase(getValuesList.rejected, (state) => {
       state.isLoading = false;
     });
+
     builder.addCase(getProfilesList.pending, (state) => {
       state.isProfilesLoading = true;
     });
@@ -76,6 +86,20 @@ const dataValuesSlice = createSlice({
     );
     builder.addCase(getProfilesList.rejected, (state) => {
       state.isProfilesLoading = false;
+    });
+
+    builder.addCase(getValuesHistory.pending, (state) => {
+      state.isLoadingHistory = true;
+    });
+    builder.addCase(
+      getValuesHistory.fulfilled,
+      (state, { payload }: { payload: IHistoryItem[] }) => {
+        state.isLoadingHistory = false;
+        state.history = payload;
+      }
+    );
+    builder.addCase(getValuesHistory.rejected, (state) => {
+      state.isLoadingHistory = false;
     });
   },
 });

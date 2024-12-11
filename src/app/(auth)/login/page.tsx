@@ -2,9 +2,10 @@
 import React from "react";
 import { Page } from "types/layout";
 import { Login as LoginScreen } from "screens";
+import NewLoginScreen from "@/screens/new-login";
 
 const Login: Page = () => {
-  return <LoginScreen />;
+  return <NewLoginScreen />;
 };
 
 export default Login;

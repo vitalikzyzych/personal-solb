@@ -15,3 +15,10 @@ export const getProfilesList = createAsyncThunk(
     return await DataValuesSource.getProfielsList(payload);
   }
 );
+
+export const getValuesHistory = createAsyncThunk(
+  "dataValues/getHistory",
+  async () => {
+    return await DataValuesSource.getHistory();
+  }
+);

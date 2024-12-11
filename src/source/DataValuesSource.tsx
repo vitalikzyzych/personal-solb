@@ -5,6 +5,7 @@ import {
   IProfileCardData,
 } from "@/store/dataValues";
 import { processRequest } from "./processor";
+import { generateFakeHistoryItems } from "@/utils/values/values";
 
 export const getValuesList = async (payload: IDataValuesParams) => {
   // const res = await processRequest({
@@ -18,6 +19,15 @@ export const getValuesList = async (payload: IDataValuesParams) => {
     pageNumber: payload.page || 1,
   };
   return res as IDataValuesResponse;
+};
+
+export const getHistory = async () => {
+  // const res = await processRequest({
+  //   url: 'bookings',
+  //   method: 'GET',
+  //   params: payload,
+  // });
+  return generateFakeHistoryItems(10);
 };
 
 export const getProfielsList = async (payload: IDataValuesParams) => {

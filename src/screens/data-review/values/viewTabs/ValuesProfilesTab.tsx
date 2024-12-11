@@ -40,7 +40,6 @@ const ValuesProfilesTab: FC = () => {
     const payload = getListParams();
 
     payload.page = (event?.page ?? 0) + 1;
-    console.log(payload);
     dispatch(getProfilesList(payload));
   };
 

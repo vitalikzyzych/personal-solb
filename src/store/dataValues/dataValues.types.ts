@@ -33,3 +33,19 @@ export interface IProfileCardData {
   approvedRatings: number;
   allRatings: number;
 }
+
+export interface IHistoryItem {
+  id: string;
+  type: "value" | "stakeholder";
+  action: "approval" | "failed_approval" | "merge" | "disapproval";
+  values: string[];
+  sourceValue?: string; // Optional for "merge" action
+  comments?: IHistoryItemComment[];
+  timestamp: string;
+}
+
+export interface IHistoryItemComment {
+  id: string;
+  text: string;
+  timestamp: string;
+}

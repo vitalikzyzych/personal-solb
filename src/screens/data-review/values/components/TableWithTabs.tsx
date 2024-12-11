@@ -99,7 +99,6 @@ const TableWithTabs: FC = () => {
   useEffect(() => {
     const payload = {} as IDataValuesParams;
     dispatch(getValuesList(payload));
-    console.log("test");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -113,7 +112,6 @@ const TableWithTabs: FC = () => {
     const payload = getListParams();
     payload.page = (event?.page ?? 0) + 1;
     payload.pageSize = newPageSize;
-    console.log(payload);
     setPageSize(newPageSize);
     dispatch(getValuesList(payload));
   };
