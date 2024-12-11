@@ -100,7 +100,10 @@ export const LayoutProvider = (props: ChildContainerProps) => {
   };
 
   const isDesktop = () => {
-    return window.innerWidth > 991;
+    if (typeof window !== "undefined") {
+      return window.innerWidth > 991;
+    }
+    return false;
   };
   const onTopbarMenuToggle = () => {
     setLayoutState((prevLayoutState) => ({

@@ -94,8 +94,10 @@ const ClusterChart: FC<IProps> = ({ data, color }) => {
   // Update dimensions on mount and resize
   useEffect(() => {
     updateDimensions(); // Set initial dimensions on page load
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", updateDimensions);
+      return () => window.removeEventListener("resize", updateDimensions);
+    }
   }, []); // Empty dependency array to run only once
 
   useEffect(() => {

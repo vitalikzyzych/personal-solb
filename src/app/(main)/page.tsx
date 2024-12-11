@@ -1,9 +1,13 @@
 "use client";
-import { Dashboard } from "@/screens";
+import dynamic from "next/dynamic";
 import { type Page } from "types";
 
+const DashboardNoSSR = dynamic(() => import("../../screens/dashboard"), {
+  ssr: false,
+});
+
 const Main: Page = () => {
-  return <Dashboard />;
+  return <DashboardNoSSR />;
 };
 
 export default Main;

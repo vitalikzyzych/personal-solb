@@ -12,6 +12,11 @@ import {
   // StakeholdersProgress,
 } from "./components";
 import { type Page } from "types";
+import dynamic from "next/dynamic";
+
+const AnalysisWithNoSSR = dynamic(() => import("./components/Analysis"), {
+  ssr: false,
+});
 
 const Dashboard: Page = () => {
   return (
@@ -45,7 +50,7 @@ const Dashboard: Page = () => {
           <Actions />
         </div>
         <div className="col-12 md:col-6">
-          <Analysis />
+          <AnalysisWithNoSSR />
         </div>
         <div className="col-12 md:col-6">
           <DataAccuracy />

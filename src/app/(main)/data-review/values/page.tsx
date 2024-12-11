@@ -1,10 +1,16 @@
 "use client";
-import { Values } from "@/screens";
-import { useEffect } from "react";
+import dynamic from "next/dynamic";
 import { type Page } from "types";
 
+const ValuesNoSSR = dynamic(
+  () => import("../../../../screens/data-review/values/Values"),
+  {
+    ssr: false,
+  }
+);
+
 const ValuesPage: Page = () => {
-  return <Values />;
+  return <ValuesNoSSR />;
 };
 
 export default ValuesPage;
