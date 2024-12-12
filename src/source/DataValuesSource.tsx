@@ -5,8 +5,8 @@ import {
   IProfileCardData,
 } from "@/store/dataValues";
 import { processRequest } from "./processor";
-import { generateFakeHistoryItems } from "@/utils/values/values";
-import { getStakeholderDocuments } from "@/utils/values/stakeholder";
+import { generateFakeHistoryItems } from "@/utils/fake/values";
+import { getStakeholderDocuments } from "@/utils/fake/stakeholder";
 
 export const getValuesList = async (payload: IDataValuesParams) => {
   // const res = await processRequest({

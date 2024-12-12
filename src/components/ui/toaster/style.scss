@@ -1,0 +1,89 @@
+$ot-primary-color: #000;
+$ot-color-green: #25ae88;
+$ot-color-orange: #ffa726;
+$ot-color-red: #d75a4a;
+
+.ot-informer {
+  padding: 1rem;
+  border: 1px solid rgba(180, 180, 180, 0.2);
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0px 10px 40px rgba(41, 50, 65, 0.06);
+}
+.Toastify {
+  .Toastify__toast {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 12px 8px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .Toastify__toast-body {
+      padding-right: 34px;
+    }
+    .Toastify__toast-body > div:not(.Toastify__toast-icon) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines to show */
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    .Toastify__toast-icon {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.5rem;
+    }
+    .Toastify__close-button {
+      opacity: 0.6;
+      width: 32px;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &.info {
+      .Toastify__progress-bar {
+        background-color: $ot-primary-color;
+      }
+      .Toastify__toast-body {
+        color: $ot-primary-color;
+      }
+      .Toastify__close-button {
+        color: $ot-primary-color;
+      }
+    }
+    &.success {
+      .Toastify__progress-bar {
+        background-color: $ot-color-green;
+      }
+      .Toastify__toast-body {
+        color: $ot-primary-color;
+      }
+      .Toastify__close-button {
+        color: $ot-primary-color;
+      }
+    }
+    &.warning {
+      .Toastify__progress-bar {
+        background-color: $ot-color-orange;
+      }
+      .Toastify__toast-body {
+        color: $ot-primary-color;
+      }
+      .Toastify__close-button {
+        color: $ot-primary-color;
+      }
+    }
+    &.error {
+      .Toastify__progress-bar {
+        background-color: $ot-color-red;
+      }
+      .Toastify__toast-body {
+        color: $ot-primary-color;
+      }
+      .Toastify__close-button {
+        color: $ot-primary-color;
+      }
+    }
+  }
+}

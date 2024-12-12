@@ -54,7 +54,18 @@ const AppMenu = () => {
         {
           label: "Settings",
           icon: "pi pi-fw pi-cog",
-          to: "/settings",
+          items: [
+            {
+              label: "Settings",
+              // icon: "pi pi-fw pi-image",
+              to: "/settings",
+            },
+            {
+              label: "Temp page",
+              // icon: "pi pi-fw pi-list",
+              to: "/temp",
+            },
+          ],
         },
       ],
     },

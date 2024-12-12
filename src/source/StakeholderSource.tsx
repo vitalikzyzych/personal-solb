@@ -6,7 +6,7 @@ import {
   getStakeholderPolling,
   getStakeholderTranscripts,
   getStakeholders,
-} from "@/utils/values/stakeholder";
+} from "@/utils/fake/stakeholder";
 
 export const getListAll = async (payload: IStakeholderListParams) => {
   return {
