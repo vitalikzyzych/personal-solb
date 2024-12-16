@@ -41,12 +41,14 @@ const AppTopbar = forwardRef(
 
     const handleLogout = async () => {
       const res = await logout();
-      if (!res) {
-        console.log("logout");
-        setTimeout(() => {
-          router.push("/login");
-        }, 100); // Small delay
-      }
+      router.push("/login");
+
+      // if (!res) {
+      //   console.log("logout");
+      //   setTimeout(() => {
+      //     router.push("/login");
+      //   }, 100); // Small delay
+      // }
     };
 
     const handleLogout2 = async () => {
