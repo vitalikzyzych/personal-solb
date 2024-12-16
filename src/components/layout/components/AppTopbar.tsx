@@ -43,7 +43,9 @@ const AppTopbar = forwardRef(
       const res = await logout();
       if (!res) {
         console.log("logout");
-        router.replace("/login");
+        setTimeout(() => {
+          router.push("/login");
+        }, 100); // Small delay
       }
     };
 
