@@ -43,7 +43,7 @@ const AppTopbar = forwardRef(
       const res = await logout();
       if (!res) {
         console.log("logout");
-        router.push("/login");
+        router.replace("/login");
       }
     };
 
