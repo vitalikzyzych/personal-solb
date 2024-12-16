@@ -44,10 +44,16 @@ const AppTopbar = forwardRef(
       if (!res) {
         console.log("logout");
         setTimeout(() => {
-          router.refresh();
           router.push("/login");
         }, 100); // Small delay
       }
+    };
+
+    const handleLogout2 = async () => {
+      console.log("logout2");
+      setTimeout(() => {
+        router.push("/login");
+      }, 100); // Small delay
     };
 
     return (
@@ -126,7 +132,7 @@ const AppTopbar = forwardRef(
                     >
                       <a
                         ref={settingsRef}
-                        onClick={() => router.push("/settings")}
+                        onClick={handleLogout2}
                         className="flex align-items-center hover:text-primary-500 transition-duration-200"
                       >
                         <i className="pi pi-fw pi-cog mr-2"></i>
@@ -146,7 +152,7 @@ const AppTopbar = forwardRef(
                     >
                       <a
                         ref={logoutRef}
-                        onClick={() => router.push("/login")}
+                        onClick={handleLogout}
                         className="flex align-items-center hover:text-primary-500 transition-duration-200 cursor-pointer"
                       >
                         <i className="pi pi-fw pi-sign-out mr-2"></i>
