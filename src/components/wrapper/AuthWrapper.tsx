@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -13,10 +13,9 @@ function AuthWrapper(props: RootLayoutProps) {
 
   useEffect(() => {
     // on initial load - run auth check
-    console.log();
-    if (!localStorage.getItem("accessToken")) {
+    if (typeof window !== "undefined" && !localStorage.getItem("accessToken")) {
       console.log("should redirect");
-      router.push("/login");
+      redirect("/login");
     }
   }, [pathname]);
 

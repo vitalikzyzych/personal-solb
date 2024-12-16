@@ -1,7 +1,7 @@
 "use client";
 import { forwardRef, useContext, useImperativeHandle, useRef } from "react";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { StyleClass } from "primereact/styleclass";
 import { Ripple } from "primereact/ripple";
 import { classNames } from "primereact/utils";
@@ -54,7 +54,7 @@ const AppTopbar = forwardRef(
     const handleLogout2 = async () => {
       console.log("logout2");
       setTimeout(() => {
-        router.push("/login");
+        redirect("/login");
       }, 100); // Small delay
     };
 
