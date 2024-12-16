@@ -7,6 +7,7 @@ import Stakeholders from "./stakeholders/Stakeholders";
 import StakeholderView from "./stakeholders/StakeholderView";
 import Values from "./data-review/values/Values";
 import ValueView from "./data-review/values/ValueView";
+import TextAnalysis from "./text-analysis/TextAnalysis";
 
 export {
   ChartSandbox,
@@ -18,4 +19,5 @@ export {
   StakeholderView,
   Values,
   ValueView,
+  TextAnalysis,
 };

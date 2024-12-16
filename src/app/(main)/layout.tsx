@@ -1,7 +1,7 @@
 "use client";
 import { useDispatch } from "react-redux";
 import Layout from "@/components/layout/mainLayout";
-import { AuthWrapper } from "components";
+import { AuthWrapper, GuestWrapper } from "components";
 import { useEffect } from "react";
 import { getUser } from "@/store/auth";
 import { AppDispatch } from "@/core/rootStore";

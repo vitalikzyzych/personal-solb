@@ -10,7 +10,7 @@ const Stakeholders: FC = () => {
   return (
     <div className="grid">
       <div className="col-12">
-        <div className="flex justify-content-between a;ign-items-center mb-5">
+        <div className="flex justify-content-between align-items-center mb-5">
           <div className="flex align-items-center gap-5 ">
             <Image
               src="/layout/images/search-paper.svg"

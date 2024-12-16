@@ -5,6 +5,8 @@ import organization from "./organization";
 import settings from "./settings";
 import stakeholder from "./stakeholder";
 import dataValues from "./dataValues";
+import gapAnalytics from "./gapAnalytics";
+import textanalysis from "./textanalysis";
 
 export const appSelector = createSelector(
   (state: RootState) => state,
@@ -17,4 +19,6 @@ export default {
   organization,
   settings,
   stakeholder,
+  gapAnalytics,
+  textanalysis,
 };

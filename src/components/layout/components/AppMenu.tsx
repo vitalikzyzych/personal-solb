@@ -52,6 +52,11 @@ const AppMenu = () => {
           ],
         },
         {
+          label: "Text Analysis",
+          icon: "pi pi-fw pi-calendar",
+          to: "/text-analysis",
+        },
+        {
           label: "Settings",
           icon: "pi pi-fw pi-cog",
           items: [
