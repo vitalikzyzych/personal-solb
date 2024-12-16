@@ -125,6 +125,7 @@ const AppTopbar = forwardRef(
                     >
                       <a
                         ref={settingsRef}
+                        onClick={() => router.push("/settings")}
                         className="flex align-items-center hover:text-primary-500 transition-duration-200"
                       >
                         <i className="pi pi-fw pi-cog mr-2"></i>
