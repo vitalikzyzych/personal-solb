@@ -57,9 +57,6 @@ const AppTopbar = forwardRef(
     const handleLogout2 = async () => {
       console.log("logout2");
       redirect("/settings");
-      setTimeout(() => {
-        redirect("/login");
-      }, 100); // Small delay
     };
 
     return (
