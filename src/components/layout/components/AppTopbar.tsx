@@ -1,7 +1,6 @@
-"use client";
 import { forwardRef, useContext, useImperativeHandle, useRef } from "react";
 import { useSelector } from "react-redux";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { StyleClass } from "primereact/styleclass";
 import { Ripple } from "primereact/ripple";
 import { classNames } from "primereact/utils";
@@ -42,21 +41,9 @@ const AppTopbar = forwardRef(
     const handleLogout = async () => {
       const res = await logout();
       if (!res) {
-        console.log("redirect to login");
+        console.log("logout");
         router.push("/login");
       }
-
-      // if (!res) {
-      //   console.log("logout");
-      //   setTimeout(() => {
-      //     router.push("/login");
-      //   }, 100); // Small delay
-      // }
-    };
-
-    const handleLogout2 = async () => {
-      console.log("logout2");
-      router.push("/settings");
     };
 
     return (
@@ -135,7 +122,6 @@ const AppTopbar = forwardRef(
                     >
                       <a
                         ref={settingsRef}
-                        onClick={handleLogout2}
                         className="flex align-items-center hover:text-primary-500 transition-duration-200"
                       >
                         <i className="pi pi-fw pi-cog mr-2"></i>
