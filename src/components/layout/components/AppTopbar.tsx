@@ -56,7 +56,7 @@ const AppTopbar = forwardRef(
 
     const handleLogout2 = async () => {
       console.log("logout2");
-      redirect("/settings");
+      router.push("/settings");
     };
 
     return (
