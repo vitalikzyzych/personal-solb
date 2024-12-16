@@ -146,7 +146,7 @@ const AppTopbar = forwardRef(
                     >
                       <a
                         ref={logoutRef}
-                        onClick={handleLogout}
+                        onClick={() => router.push("/login")}
                         className="flex align-items-center hover:text-primary-500 transition-duration-200 cursor-pointer"
                       >
                         <i className="pi pi-fw pi-sign-out mr-2"></i>
