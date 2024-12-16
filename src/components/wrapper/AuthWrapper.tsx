@@ -13,7 +13,9 @@ function AuthWrapper(props: RootLayoutProps) {
 
   useEffect(() => {
     // on initial load - run auth check
+    console.log();
     if (!localStorage.getItem("accessToken")) {
+      console.log("should redirect");
       router.push("/login");
     }
   }, [pathname]);
