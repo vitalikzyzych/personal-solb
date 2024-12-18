@@ -2,7 +2,6 @@
 import { themes } from "@/constants/theme";
 import { AppDispatch } from "@/core/rootStore";
 import { appSelector } from "@/store";
-import { getUser } from "@/store/auth";
 import { getTheme, setTheme } from "@/store/settings";
 import { useRouter } from "next/navigation";
 import { RadioButton } from "primereact/radiobutton";
@@ -23,7 +22,6 @@ const Settings: Page = () => {
 
   const handleThemeChange = (theme: string) => {
     dispatch(setTheme(theme));
-    console.log(`Theme changed to: ${theme}`); // Save logic here (API or local storage)
   };
   return (
     <>

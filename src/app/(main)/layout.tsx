@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Layout from "@/components/layout/mainLayout";
 import { AuthWrapper, GuestWrapper } from "components";
 import { useEffect } from "react";
-import { getUser } from "@/store/auth";
+import { checkUser } from "@/store/auth";
 import { AppDispatch } from "@/core/rootStore";
 
 interface MainLayoutProps {
@@ -14,7 +14,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getUser());
+    dispatch(checkUser());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

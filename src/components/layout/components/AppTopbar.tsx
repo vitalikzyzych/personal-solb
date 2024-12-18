@@ -41,7 +41,6 @@ const AppTopbar = forwardRef(
     const handleLogout = async () => {
       const res = await logout();
       if (!res) {
-        console.log("logout");
         router.push("/login");
       }
     };
@@ -70,7 +69,9 @@ const AppTopbar = forwardRef(
                   "block sm:hidden topbar-item": !isHorizontal(),
                 })}
               ></li>
-              <li className="topbar-item mr-1 font-semibold">{user?.name}</li>
+              <li className="topbar-item mr-1 font-semibold">
+                {`${user?.first_name} ${user?.last_name}`}{" "}
+              </li>
               <li className="topbar-item mr-3">
                 <StyleClass
                   nodeRef={imgRef}

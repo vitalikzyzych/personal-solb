@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { AppDispatch } from "@/core/rootStore";
-import { signIn } from "@/source/AuthSource";
 import { appSelector } from "@/store";
-import { IVerifyResponse, setTempUserData, verifyUser } from "@/store/auth";
-import Link from "next/link";
+import { createProject } from "@/store/auth";
 import { useRouter } from "next/navigation";
 import { Button } from "primereact/button";
 
@@ -13,10 +11,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // TODO: work on responsiveness
-const OtpVerification = () => {
-  const [verificationCode, setVerificationCode] = useState("");
+const CreateProject = () => {
+  const [projectName, setProjectName] = useState("");
   const {
-    auth: { signUpPayload },
+    auth: { user },
   } = useSelector(appSelector);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -25,19 +23,13 @@ const OtpVerification = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const { payload } = (await dispatch(
-      verifyUser({
-        username: signUpPayload.email || "vitalikzyzych+7@gmail.com",
-        password: verificationCode,
+      createProject({
+        organization_id: user.attributes.organizationId[0],
+        name: projectName,
       })
-    )) as { payload: IVerifyResponse };
-    if (payload.verified) {
-      dispatch(
-        setTempUserData({
-          userId: payload.userId,
-          username: signUpPayload.email || "vitalikzyzych+7@gmail.com",
-        })
-      );
-      router.push("/create-password");
+    )) as { payload: { status: string } };
+    if (payload.status === "success") {
+      router.push("/");
     }
   };
   return (
@@ -61,33 +53,26 @@ const OtpVerification = () => {
               <div className="flex flex-column">
                 <div className="">
                   <p className="text-5xl font-medium mb-4 ">
-                    We have sent you a temporary password
+                    Create your first project
                   </p>
                 </div>
                 <span className="w-full mb-4">
                   <InputText
                     id="verificationCode"
-                    value={verificationCode}
                     type="text"
                     className="w-full md:w-25rem text-color-secondary surface-50 border-200"
-                    placeholder="verificationCode"
-                    onChange={(e) => setVerificationCode(e.target.value)}
+                    placeholder="project name"
+                    value={projectName}
+                    onChange={(e) => setProjectName(e.target.value)}
                   />
                 </span>
-                <p className="text-sm text-gray-200">
-                  Received no email? Click{" "}
-                  <Link href="/login" className="underline text-gray-200">
-                    here
-                  </Link>{" "}
-                  to resend email.
-                </p>
 
                 <Button
                   className="p-ripple w-full surface-50 border-50 mt-8 mb-4 text-0 flex align-items-center justify-content-center"
                   onClick={handleSubmit}
-                  disabled={!verificationCode}
+                  disabled={!projectName}
                 >
-                  <p className="text-gray-900 font-medium">Next</p>
+                  <p className="text-gray-900 font-medium">Create</p>
                 </Button>
               </div>
             </div>
@@ -108,4 +93,4 @@ const OtpVerification = () => {
   );
 };
 
-export default OtpVerification;
+export default CreateProject;

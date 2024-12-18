@@ -344,8 +344,7 @@ const Identity: FC<IProps> = ({ id }) => {
                               "p-d-block w-full text-gray-900",
                               {
                                 "p-invalid":
-                                  formik.touched?.city &&
-                                  formik.errors?.lastName,
+                                  formik.touched?.city && formik.errors?.city,
                               }
                             )}
                           />

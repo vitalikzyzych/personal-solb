@@ -1,36 +1,64 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getUser } from "./auth.actions";
+import { checkUser, createUser } from "./auth.actions";
 
-import { IUser } from "./auth.types";
+import { ISignUpResponse, ITempUserData, IUser } from "./auth.types";
 
 interface IInitialAuthSliceState {
+  isCheckingUser: boolean;
+  isCreatingUser: boolean;
   isGettingUser: boolean;
+  signUpPayload: ISignUpResponse;
   user: IUser;
+  tempUserData: ITempUserData;
 }
 
 const initialState: IInitialAuthSliceState = {
+  isCheckingUser: false,
+  isCreatingUser: false,
   isGettingUser: false,
-  user: {},
+  signUpPayload: {
+    email: "",
+    registered: false,
+  },
+  user: {} as IUser,
+  tempUserData: {},
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setTempUserData(state, { payload }) {
+      state.tempUserData = payload;
+    },
+  },
 
   extraReducers: (builder) => {
-    builder.addCase(getUser.pending, (state) => {
-      state.isGettingUser = true;
+    builder.addCase(createUser.pending, (state) => {
+      state.isCreatingUser = true;
     });
-    builder.addCase(getUser.fulfilled, (state, { payload }) => {
-      state.isGettingUser = false;
+    builder.addCase(createUser.fulfilled, (state, { payload }) => {
+      state.isCreatingUser = false;
+      state.signUpPayload = payload;
+    });
+    builder.addCase(createUser.rejected, (state) => {
+      state.isCreatingUser = false;
+    });
+
+    builder.addCase(checkUser.pending, (state) => {
+      state.isCheckingUser = true;
+    });
+    builder.addCase(checkUser.fulfilled, (state, { payload }) => {
+      state.isCheckingUser = false;
       state.user = payload;
     });
-    builder.addCase(getUser.rejected, (state) => {
-      state.isGettingUser = false;
+    builder.addCase(checkUser.rejected, (state) => {
+      state.isCheckingUser = false;
     });
   },
 });
+
+export const { setTempUserData } = authSlice.actions;
 
 export default authSlice.reducer;

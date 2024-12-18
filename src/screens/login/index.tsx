@@ -7,6 +7,9 @@ import { Button } from "primereact/button";
 import { signIn } from "source/AuthSource";
 import { Checkbox } from "primereact/checkbox";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/core/rootStore";
+import { checkUser, setTempUserData } from "@/store/auth";
 
 const NewLoginScreen = () => {
   const [username, setUsername] = useState("");
@@ -14,13 +17,24 @@ const NewLoginScreen = () => {
   const [rememberMe, setRememberMe] = React.useState(false);
 
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
       const tokenData = await signIn(username, password);
-
+      if (tokenData?.needPasswordReset) {
+        dispatch(
+          setTempUserData({
+            userId: tokenData?.userId,
+            username,
+          })
+        );
+        router.push("/create-password");
+      }
       if (tokenData?.access_token) {
+        await dispatch(checkUser());
+
         router.push("/");
       }
     } catch (error) {
@@ -99,7 +113,7 @@ const NewLoginScreen = () => {
                 </Button>
                 <p className="text-center text-base text-500">
                   New member? Sign up{" "}
-                  <Link href="/register" className="underline text-500">
+                  <Link href="/signup" className="underline text-500">
                     here
                   </Link>
                 </p>

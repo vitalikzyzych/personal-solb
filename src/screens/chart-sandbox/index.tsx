@@ -1,7 +1,6 @@
 "use client";
 import { AppDispatch } from "@/core/rootStore";
 import { appSelector } from "@/store";
-import { getUser } from "@/store/auth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +20,6 @@ const ChartSandbox: Page = () => {
 
   useEffect(() => {
     dispatch(getTheme());
-    dispatch(getUser());
   }, []);
   const {
     settings: { theme, isLoading },

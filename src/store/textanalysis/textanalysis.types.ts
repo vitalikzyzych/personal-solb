@@ -24,3 +24,26 @@ export interface ISelectedDataResponse {
   totalElements: number;
   pageNumber: number;
 }
+
+export interface IReviewValue {
+  id: number;
+  name: string;
+  occurredIn: string[];
+  ratings: number;
+  rejected: boolean;
+}
+export interface IReviewStakeholder {
+  id: number;
+  name: string;
+  occurredIn: string[];
+  ratings: number;
+  affiliation: string;
+  rejected: boolean;
+}
+
+export enum ContentKeys {
+  STAKEHOLDERS_NEW = "stakeholders_new",
+  STAKEHOLDERS_EXISTING = "stakeholders_existing",
+  VALUES_NEW = "values_new",
+  VALUES_EXISTING = "values_existing",
+}

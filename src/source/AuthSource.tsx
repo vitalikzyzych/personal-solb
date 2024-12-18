@@ -1,7 +1,17 @@
 import { toaster } from "@/components/ui";
+import {
+  IChangePassword,
+  ICreateProject,
+  ISignIn,
+  ISignUp,
+} from "@/store/auth";
 import axios, { AxiosRequestConfig } from "axios";
 import { jwtDecode } from "jwt-decode";
-const BASE_URL = "https://user-management-staging.solv.world/";
+import { processRequest } from "./processor";
+const BASE_URL = "https://user-management-staging.solv.world";
+import { BASE_AUTH_URL } from "constants/env";
+const API_BASE_URL = BASE_AUTH_URL;
+const NLP_BASE_URL = "https://nlp-api-go-staging.solv.world";
 
 export const signIn = async (username: string, password: string) => {
   const data = {
@@ -10,7 +20,7 @@ export const signIn = async (username: string, password: string) => {
   };
   const requestParams = {
     method: "POST",
-    url: BASE_URL + "auth/login",
+    url: BASE_URL + "/" + "auth/login",
     data: data,
   } as AxiosRequestConfig;
 
@@ -30,12 +40,19 @@ export const signIn = async (username: string, password: string) => {
     );
     return response.data.access_token; // Contains access_token, refresh_token, etc.
   } catch (error) {
-    if (error instanceof Error) {
-      toaster({
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        text: (error as any).response?.data.error_description || error.message,
-        type: "error",
-      });
+    if (axios.isAxiosError(error)) {
+      if (error?.response?.data.error.includes("Account is not fully set up")) {
+        return {
+          needPasswordReset: true,
+          userId: error?.response?.data.user_id,
+        };
+      } else {
+        toaster({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          text: error.response?.data.error_description || error.message,
+          type: "error",
+        });
+      }
     } else {
       console.error("An unknown error occurred:", error);
     }
@@ -46,7 +63,7 @@ export const signIn = async (username: string, password: string) => {
 export const logout = async () => {
   const requestParams = {
     method: "POST",
-    url: BASE_URL + "auth/logout",
+    url: BASE_URL + "/" + "auth/logout",
     data: {
       refresh_token: localStorage.getItem("refreshToken"),
     },
@@ -74,15 +91,61 @@ export const logout = async () => {
   }
 };
 
-export const getUser = async () => {
-  const token = localStorage.getItem("accessToken");
-  const { email, name } = jwtDecode(token as string) as {
-    email: string;
-    name: string;
-  };
-
+export const createUser = async (payload: ISignUp) => {
+  const res = await processRequest({
+    method: "POST",
+    data: payload,
+    fullURL: true,
+    url: API_BASE_URL + "/" + "auth/signup",
+  });
   return {
-    email,
-    name,
+    email: payload.email,
+    registered: res.message === "User registered successfully",
   };
+};
+
+export const verifyUser = async (payload: ISignIn) => {
+  const res = await processRequest({
+    method: "POST",
+    data: payload,
+    fullURL: true,
+    url: API_BASE_URL + "/" + "auth/login",
+  });
+  return {
+    email: payload.username,
+    verified: !!res.verified,
+    userId: res.userId,
+  };
+};
+
+export const changeUserPassword = async (payload: IChangePassword) => {
+  const res = await processRequest({
+    method: "PATCH",
+    data: payload,
+    fullURL: true,
+    url: API_BASE_URL + "/" + "auth/reset-password",
+  });
+  return {
+    reset: res.message === "Password reset successfully",
+  };
+};
+
+export const checkUser = async () => {
+  const res = await processRequest({
+    method: "GET",
+    fullURL: true,
+    url: API_BASE_URL + "/" + "auth/check-user",
+  });
+  return res.user_info;
+};
+
+export const createProject = async (payload: ICreateProject) => {
+  const res = await processRequest({
+    method: "POST",
+    fullURL: true,
+    data: payload,
+    url: NLP_BASE_URL + "/" + "api/v1/project",
+  });
+  console.log(res);
+  return res;
 };

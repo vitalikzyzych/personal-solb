@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { type FC } from "react";
 import {
+  ReviewResults,
   SelectDocuments,
   SelectedDocuments,
   Stepper,
@@ -34,8 +35,8 @@ const TextAnalysis: FC = () => {
         return <SelectedDocuments />;
       case 2:
         return <AnalysisStep />;
-      // case 3:
-      //   return <ReviewResults />;
+      case 3:
+        return <ReviewResults />;
     }
   };
 
